@@ -13,6 +13,9 @@
 		ED48DFCE174E8D0200BA095A /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = ED48DFCC174E8D0200BA095A /* Credits.rtf */; };
 		ED48DFD1174E8D0200BA095A /* VWTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED48DFD0174E8D0200BA095A /* VWTAppDelegate.m */; };
 		ED48DFD4174E8D0300BA095A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED48DFD2174E8D0300BA095A /* MainMenu.xib */; };
+		ED5FC1D9174FDC4700316344 /* VWTTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5FC1D8174FDC4700316344 /* VWTTimer.m */; };
+		ED5FC1DC174FE22800316344 /* VWTSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5FC1DB174FE22800316344 /* VWTSounds.m */; };
+		ED648938174FCCA70050D633 /* icons.iconset in Resources */ = {isa = PBXBuildFile; fileRef = ED648937174FCCA70050D633 /* icons.iconset */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,11 @@
 		ED48DFCF174E8D0200BA095A /* VWTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWTAppDelegate.h; sourceTree = "<group>"; };
 		ED48DFD0174E8D0200BA095A /* VWTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWTAppDelegate.m; sourceTree = "<group>"; };
 		ED48DFD3174E8D0300BA095A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		ED5FC1D7174FDC4700316344 /* VWTTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWTTimer.h; sourceTree = "<group>"; };
+		ED5FC1D8174FDC4700316344 /* VWTTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTTimer.m; sourceTree = "<group>"; };
+		ED5FC1DA174FE22800316344 /* VWTSounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWTSounds.h; sourceTree = "<group>"; };
+		ED5FC1DB174FE22800316344 /* VWTSounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTSounds.m; sourceTree = "<group>"; };
+		ED648937174FCCA70050D633 /* icons.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icons.iconset; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,7 @@
 			children = (
 				ED48DFCF174E8D0200BA095A /* VWTAppDelegate.h */,
 				ED48DFD0174E8D0200BA095A /* VWTAppDelegate.m */,
+				ED648937174FCCA70050D633 /* icons.iconset */,
 				ED48DFD2174E8D0300BA095A /* MainMenu.xib */,
 				ED48DFC4174E8D0200BA095A /* Supporting Files */,
 			);
@@ -94,6 +103,10 @@
 			isa = PBXGroup;
 			children = (
 				ED48DFC5174E8D0200BA095A /* Timer-Info.plist */,
+				ED5FC1D7174FDC4700316344 /* VWTTimer.h */,
+				ED5FC1D8174FDC4700316344 /* VWTTimer.m */,
+				ED5FC1DA174FE22800316344 /* VWTSounds.h */,
+				ED5FC1DB174FE22800316344 /* VWTSounds.m */,
 				ED48DFC6174E8D0200BA095A /* InfoPlist.strings */,
 				ED48DFC9174E8D0200BA095A /* main.m */,
 				ED48DFCB174E8D0200BA095A /* Timer-Prefix.pch */,
@@ -157,6 +170,7 @@
 				ED48DFC8174E8D0200BA095A /* InfoPlist.strings in Resources */,
 				ED48DFCE174E8D0200BA095A /* Credits.rtf in Resources */,
 				ED48DFD4174E8D0300BA095A /* MainMenu.xib in Resources */,
+				ED648938174FCCA70050D633 /* icons.iconset in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,6 +183,8 @@
 			files = (
 				ED48DFCA174E8D0200BA095A /* main.m in Sources */,
 				ED48DFD1174E8D0200BA095A /* VWTAppDelegate.m in Sources */,
+				ED5FC1D9174FDC4700316344 /* VWTTimer.m in Sources */,
+				ED5FC1DC174FE22800316344 /* VWTSounds.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +320,7 @@
 				ED48DFD9174E8D0300BA095A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

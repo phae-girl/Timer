@@ -11,7 +11,7 @@
 @interface VWTAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
-@property NSMutableArray *sounds;
+
 
 - (IBAction)startTimer:(id)sender;
 @end

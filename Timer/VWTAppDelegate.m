@@ -7,11 +7,14 @@
 //
 
 #import "VWTAppDelegate.h"
+#import "VWTTimer.h"
+#import "VWTSounds.h"
 
-@interface VWTAppDelegate ()
-@property NSTimer *timer;
+@interface VWTAppDelegate () <VWTTimerDelegateProtocol>
+
+@property VWTTimer *timer;
 @property NSDate *startTime;
-@property NSInteger timeCounter;
+
 @property IBOutlet NSTextField *label;
 
 
@@ -21,52 +24,25 @@
 
 -(void)awakeFromNib
 {
-	NSString *path = @"/System/Library/Sounds";
-	NSFileManager *fm = [NSFileManager defaultManager];
-	NSArray *files = [fm contentsOfDirectoryAtPath:path error:nil];
-	[self populateSoundsFromFiles:files];
-	NSLog(@"%@", self.sounds);
-	NSLog(@"%s",__PRETTY_FUNCTION__);
-
+	VWTSounds *sounds = [[VWTSounds alloc]init];
+	NSLog(@"%@", sounds.sounds);
+	
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	NSLog(@"%s",__PRETTY_FUNCTION__);
+	
 		
 }
 
-- (void)populateSoundsFromFiles:(NSArray *)fileList
-{
-	if (!_sounds) {
-		_sounds = [NSMutableArray array];
-	}
-	
-	[fileList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		NSString *soundName = [obj stringByDeletingPathExtension];
-		[self.sounds addObject:soundName];
-		
-	}];
-}
 - (IBAction)startTimer:(id)sender {
-	_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
-	_startTime = [NSDate date];
-	_timeCounter = 0;
+	_timer = [[VWTTimer alloc]initWithTimeInterval:5 repeats:NO];
+	[self.timer setDelegate:self];
 }
 
-- (void)timerFired
+- (void)timerDidFire
 {
-	self.timeCounter++;
-	self.label.stringValue = [NSString stringWithFormat:@"%ld", (long)self.timeCounter];
-	
-	NSLog(@"%ld", (long)self.timeCounter);
-	
-	if (self.timeCounter >10) {
-		[self.timer invalidate];
-		[[NSSound soundNamed:@"Ping"]play];
-	}
-	
-	
+		NSLog(@"Timer Done");
 }
 
 @end
