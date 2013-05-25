@@ -13,7 +13,6 @@
 @interface VWTAppController () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate>
 @property (nonatomic) VWTTimer *timer;
 
-
 @end
 
 @implementation VWTAppController
@@ -33,7 +32,6 @@
 	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
     [self.soundSelector addItemsWithTitles:[VWTSounds getSounds]];
 	
-   
 }
 
 - (IBAction)testSound:(id)sender {
@@ -91,11 +89,6 @@
 	
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
 
-}
-
--(void)dealloc
-{
-	NSLog(@"%s",__PRETTY_FUNCTION__);
 }
 
 @end

@@ -17,7 +17,6 @@
 
 @implementation VWTTimer
 
-
 -(id)initWithDuration:(NSInteger)minutes
 {
 	self = [super init];
@@ -44,14 +43,15 @@
 		}
 		if(self.minutesRemaining>-1)
 			[self.delegate timerDidFire:[NSString stringWithFormat:@"%li:%02li", self.minutesRemaining, self.secondsRemaining]];
-			
 	}
+	
     else
     {
         [self.delegate timerDidComplete];
 		[self stopTimer];
     }
 }
+
 - (void)stopTimer
 {
 	[self.timer invalidate];

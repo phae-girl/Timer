@@ -19,7 +19,6 @@
 
 @property (weak, nonatomic) NSObject <VWTTimerDelegateProtocol> *delegate;
 
-
 - (id)initWithDuration:(NSInteger)minutes;
 
 - (void)stopTimer;
