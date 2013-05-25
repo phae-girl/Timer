@@ -15,7 +15,9 @@
 		ED48DFD4174E8D0300BA095A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED48DFD2174E8D0300BA095A /* MainMenu.xib */; };
 		ED5FC1D9174FDC4700316344 /* VWTTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5FC1D8174FDC4700316344 /* VWTTimer.m */; };
 		ED5FC1DC174FE22800316344 /* VWTSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5FC1DB174FE22800316344 /* VWTSounds.m */; };
-		ED648938174FCCA70050D633 /* icons.iconset in Resources */ = {isa = PBXBuildFile; fileRef = ED648937174FCCA70050D633 /* icons.iconset */; };
+		ED5FC1E01750568A00316344 /* VWTAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5FC1DE1750568A00316344 /* VWTAppController.m */; };
+		ED5FC1E11750568A00316344 /* VWTAppController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED5FC1DF1750568A00316344 /* VWTAppController.xib */; };
+		ED5FC1E41750836F00316344 /* icons.icns in Resources */ = {isa = PBXBuildFile; fileRef = ED5FC1E31750836F00316344 /* icons.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,10 @@
 		ED5FC1D8174FDC4700316344 /* VWTTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTTimer.m; sourceTree = "<group>"; };
 		ED5FC1DA174FE22800316344 /* VWTSounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWTSounds.h; sourceTree = "<group>"; };
 		ED5FC1DB174FE22800316344 /* VWTSounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTSounds.m; sourceTree = "<group>"; };
+		ED5FC1DD1750568A00316344 /* VWTAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWTAppController.h; sourceTree = "<group>"; };
+		ED5FC1DE1750568A00316344 /* VWTAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTAppController.m; sourceTree = "<group>"; };
+		ED5FC1DF1750568A00316344 /* VWTAppController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VWTAppController.xib; sourceTree = "<group>"; };
+		ED5FC1E31750836F00316344 /* icons.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icons.icns; sourceTree = "<group>"; };
 		ED648937174FCCA70050D633 /* icons.iconset */ = {isa = PBXFileReference; lastKnownFileType = folder.iconset; path = icons.iconset; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +98,7 @@
 			children = (
 				ED48DFCF174E8D0200BA095A /* VWTAppDelegate.h */,
 				ED48DFD0174E8D0200BA095A /* VWTAppDelegate.m */,
+				ED5FC1E21750569700316344 /* AppController */,
 				ED648937174FCCA70050D633 /* icons.iconset */,
 				ED48DFD2174E8D0300BA095A /* MainMenu.xib */,
 				ED48DFC4174E8D0200BA095A /* Supporting Files */,
@@ -102,6 +109,7 @@
 		ED48DFC4174E8D0200BA095A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ED5FC1E31750836F00316344 /* icons.icns */,
 				ED48DFC5174E8D0200BA095A /* Timer-Info.plist */,
 				ED5FC1D7174FDC4700316344 /* VWTTimer.h */,
 				ED5FC1D8174FDC4700316344 /* VWTTimer.m */,
@@ -113,6 +121,16 @@
 				ED48DFCC174E8D0200BA095A /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ED5FC1E21750569700316344 /* AppController */ = {
+			isa = PBXGroup;
+			children = (
+				ED5FC1DD1750568A00316344 /* VWTAppController.h */,
+				ED5FC1DE1750568A00316344 /* VWTAppController.m */,
+				ED5FC1DF1750568A00316344 /* VWTAppController.xib */,
+			);
+			name = AppController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,7 +188,8 @@
 				ED48DFC8174E8D0200BA095A /* InfoPlist.strings in Resources */,
 				ED48DFCE174E8D0200BA095A /* Credits.rtf in Resources */,
 				ED48DFD4174E8D0300BA095A /* MainMenu.xib in Resources */,
-				ED648938174FCCA70050D633 /* icons.iconset in Resources */,
+				ED5FC1E11750568A00316344 /* VWTAppController.xib in Resources */,
+				ED5FC1E41750836F00316344 /* icons.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +204,7 @@
 				ED48DFD1174E8D0200BA095A /* VWTAppDelegate.m in Sources */,
 				ED5FC1D9174FDC4700316344 /* VWTTimer.m in Sources */,
 				ED5FC1DC174FE22800316344 /* VWTSounds.m in Sources */,
+				ED5FC1E01750568A00316344 /* VWTAppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,51 +7,35 @@
 //
 
 #import "VWTAppDelegate.h"
-#import "VWTTimer.h"
-#import "VWTSounds.h"
 
-@interface VWTAppDelegate () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate>
 
-@property VWTTimer *timer;
+#import "VWTAppController.h"
 
-@property IBOutlet NSTextField *label;
-
+@interface VWTAppDelegate () 
+@property VWTAppController *appController;
 
 @end
 
 @implementation VWTAppDelegate
 
--(void)awakeFromNib
-{
-	if (!_soundsArray)
-		_soundsArray = [NSArray arrayWithArray:[VWTSounds getSounds]];
-	[self.dropDown addItemsWithTitles:self.soundsArray];
-}
-
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+	if (!_appController) {
+		_appController = [[VWTAppController alloc]initWithWindowNibName:@"VWTAppController"];
+		[self.appController showWindow:self.appController];
+	}
 }
 
-- (IBAction)startTimer:(id)sender {
-	_timer = [[VWTTimer alloc]initWithTimeInterval:5 repeats:NO];
-	[self.timer setDelegate:self];
-}
-
-- (IBAction)soundSelected:(id)sender {
-}
-
-- (void)timerDidFire
+-(BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
 {
-	//[[NSSound soundNamed:self.dropDown.titleOfSelectedItem]play];
-	NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = @"Hello, World!";
-    notification.informativeText = @"A notification";
-    notification.soundName = self.dropDown.titleOfSelectedItem;
-	
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+	if (!_appController) {
+		_appController = [[VWTAppController alloc]initWithWindowNibName:@"VWTAppController"];
+		[self.appController showWindow:self.appController];
+	}
+	else {
+		[self.appController showWindow:self.appController];
+	}
+	return YES;
 }
-- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
-    return YES;
-}
+
 @end

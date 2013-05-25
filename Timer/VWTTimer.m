@@ -11,24 +11,56 @@
 @interface VWTTimer ()
 @property (weak, nonatomic) NSTimer *timer;
 @property (copy, nonatomic) NSMutableArray *sounds;
+@property NSInteger minutesRemaining, secondsRemaining;
 
 @end
 
 @implementation VWTTimer
 
-- (id)initWithTimeInterval:(NSInteger)interval repeats:(BOOL)repeats
+
+-(id)initWithDuration:(NSInteger)minutes
 {
-    self = [super init];
-    if (self) {
-		_timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(timerFired) userInfo:nil repeats:repeats];
+	self = [super init];
+	if (self) {
+		_minutesRemaining = minutes;
+		_secondsRemaining = 0;
+		[self startTimer];
+	}
+	return self;
+}
+
+-(void)timerFired
+{
+	if((self.minutesRemaining>0 || self.secondsRemaining>=0) && self.minutesRemaining>=0)
+	{
+		if(self.secondsRemaining==0)
+		{
+			self.minutesRemaining-=1;
+			self.secondsRemaining=59;
+		}
+		else if(self.secondsRemaining>0)
+		{
+			self.secondsRemaining-=1;
+		}
+		if(self.minutesRemaining>-1)
+			[self.delegate timerDidFire:[NSString stringWithFormat:@"%li:%02li", self.minutesRemaining, self.secondsRemaining]];
+			
+	}
+    else
+    {
+        [self.delegate timerDidComplete];
+		[self stopTimer];
     }
-    return self;
 }
-
-- (void)timerFired
+- (void)stopTimer
 {
-	[self.delegate timerDidFire];
+	[self.timer invalidate];
 }
 
+- (void)startTimer
+{
+	if (!_timer)
+		_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+}
 
 @end
