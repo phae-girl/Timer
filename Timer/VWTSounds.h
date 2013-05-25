@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface VWTSounds : NSObject
-@property (copy, readonly) NSMutableArray *sounds;
+
++ (NSArray *)getSounds;
 
 @end

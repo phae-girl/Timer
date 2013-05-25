@@ -10,10 +10,9 @@
 #import "VWTTimer.h"
 #import "VWTSounds.h"
 
-@interface VWTAppDelegate () <VWTTimerDelegateProtocol>
+@interface VWTAppDelegate () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate>
 
 @property VWTTimer *timer;
-@property NSDate *startTime;
 
 @property IBOutlet NSTextField *label;
 
@@ -24,15 +23,14 @@
 
 -(void)awakeFromNib
 {
-	VWTSounds *sounds = [[VWTSounds alloc]init];
-	NSLog(@"%@", sounds.sounds);
-	
+	if (!_soundsArray)
+		_soundsArray = [NSArray arrayWithArray:[VWTSounds getSounds]];
+	[self.dropDown addItemsWithTitles:self.soundsArray];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-	
-		
+	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
 
 - (IBAction)startTimer:(id)sender {
@@ -40,9 +38,20 @@
 	[self.timer setDelegate:self];
 }
 
-- (void)timerDidFire
-{
-		NSLog(@"Timer Done");
+- (IBAction)soundSelected:(id)sender {
 }
 
+- (void)timerDidFire
+{
+	//[[NSSound soundNamed:self.dropDown.titleOfSelectedItem]play];
+	NSUserNotification *notification = [[NSUserNotification alloc] init];
+    notification.title = @"Hello, World!";
+    notification.informativeText = @"A notification";
+    notification.soundName = self.dropDown.titleOfSelectedItem;
+	
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+}
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
+    return YES;
+}
 @end

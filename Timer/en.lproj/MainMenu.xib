@@ -1334,13 +1334,12 @@
 								<string key="NSKeyEquivalent"/>
 								<int key="NSPeriodicDelay">400</int>
 								<int key="NSPeriodicInterval">75</int>
-								<object class="NSMenuItem" key="NSMenuItem" id="545160553">
-									<reference key="NSMenu" ref="969849425"/>
-									<string key="NSTitle">Item 1</string>
+								<object class="NSMenuItem" key="NSMenuItem">
+									<bool key="NSIsHidden">YES</bool>
+									<string key="NSTitle"/>
 									<string key="NSKeyEquiv"/>
 									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
-									<int key="NSState">1</int>
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 									<string key="NSAction">_popUpItemAction:</string>
@@ -1349,33 +1348,10 @@
 								<bool key="NSMenuItemRespectAlignment">YES</bool>
 								<object class="NSMenu" key="NSMenu" id="969849425">
 									<string key="NSTitle">OtherViews</string>
-									<array class="NSMutableArray" key="NSMenuItems">
-										<reference ref="545160553"/>
-										<object class="NSMenuItem" id="74884098">
-											<reference key="NSMenu" ref="969849425"/>
-											<string key="NSTitle">Item 2</string>
-											<string key="NSKeyEquiv"/>
-											<int key="NSKeyEquivModMask">1048576</int>
-											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="35465992"/>
-											<reference key="NSMixedImage" ref="502551668"/>
-											<string key="NSAction">_popUpItemAction:</string>
-											<reference key="NSTarget" ref="155974140"/>
-										</object>
-										<object class="NSMenuItem" id="116196526">
-											<reference key="NSMenu" ref="969849425"/>
-											<string key="NSTitle">Item 3</string>
-											<string key="NSKeyEquiv"/>
-											<int key="NSKeyEquivModMask">1048576</int>
-											<int key="NSMnemonicLoc">2147483647</int>
-											<reference key="NSOnImage" ref="35465992"/>
-											<reference key="NSMixedImage" ref="502551668"/>
-											<string key="NSAction">_popUpItemAction:</string>
-											<reference key="NSTarget" ref="155974140"/>
-										</object>
-									</array>
+									<array class="NSMutableArray" key="NSMenuItems"/>
 									<reference key="NSMenuFont" ref="607659665"/>
 								</object>
+								<int key="NSSelectedIndex">-1</int>
 								<int key="NSPreferredEdge">1</int>
 								<bool key="NSUsesItemFromMenu">YES</bool>
 								<bool key="NSAltersState">YES</bool>
@@ -2162,6 +2138,22 @@
 						<reference key="destination" ref="914570067"/>
 					</object>
 					<int key="connectionID">567</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">dropDown</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="429981863"/>
+					</object>
+					<int key="connectionID">571</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">soundSelected:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="155974140"/>
+					</object>
+					<int key="connectionID">572</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3298,27 +3290,8 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">538</int>
 						<reference key="object" ref="969849425"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="545160553"/>
-							<reference ref="74884098"/>
-							<reference ref="116196526"/>
-						</array>
+						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="155974140"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">539</int>
-						<reference key="object" ref="545160553"/>
-						<reference key="parent" ref="969849425"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">540</int>
-						<reference key="object" ref="74884098"/>
-						<reference key="parent" ref="969849425"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">541</int>
-						<reference key="object" ref="116196526"/>
-						<reference key="parent" ref="969849425"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">543</int>
@@ -3579,9 +3552,6 @@
 				<string key="536.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="537.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="538.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="539.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="540.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="541.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="543.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="544.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="545.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3620,7 +3590,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">567</int>
+			<int key="maxID">572</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3635,22 +3605,30 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">VWTAppDelegate</string>
 					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">startTimer:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">startTimer:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="soundSelected:">id</string>
+						<string key="startTimer:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="soundSelected:">
+							<string key="name">soundSelected:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="startTimer:">
 							<string key="name">startTimer:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="dropDown">NSPopUpButton</string>
 						<string key="label">NSTextField</string>
 						<string key="window">NSWindow</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="dropDown">
+							<string key="name">dropDown</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="label">
 							<string key="name">label</string>
 							<string key="candidateClassName">NSTextField</string>

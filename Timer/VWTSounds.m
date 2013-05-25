@@ -14,29 +14,26 @@
 @end
 
 @implementation VWTSounds
+
 - (id)init
 {
     self = [super init];
     if (self) {
-        NSString *path = @"/System/Library/Sounds";
-		NSFileManager *fm = [NSFileManager defaultManager];
-		NSArray *files = [fm contentsOfDirectoryAtPath:path error:nil];
-		[self populateSoundsFromFiles:files];
-    }
+	}
     return self;
 }
 
-- (void)populateSoundsFromFiles:(NSArray *)fileList
++ (NSArray *)getSounds
 {
-	if (!_sounds) {
-		_sounds = [NSMutableArray array];
-	}
+	NSString *path = @"/System/Library/Sounds";
+	NSFileManager *fm = [NSFileManager defaultManager];
+	NSArray *files = [[fm contentsOfDirectoryAtPath:path error:nil] mutableCopy];
+	NSMutableArray *sounds = [NSMutableArray array];
 	
-	[fileList enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		NSString *soundName = [obj stringByDeletingPathExtension];
-		[self.sounds addObject:soundName];
-		
+	[files enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		[sounds addObject: [obj stringByDeletingPathExtension]];
 	}];
+	return [NSArray arrayWithArray:sounds];
 }
 
 @end

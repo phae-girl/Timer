@@ -20,9 +20,7 @@
 {
     self = [super init];
     if (self) {
-		
-		
-        _timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(timerFired) userInfo:nil repeats:repeats];
+		_timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(timerFired) userInfo:nil repeats:repeats];
     }
     return self;
 }
