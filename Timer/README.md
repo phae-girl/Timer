@@ -1,0 +1,1 @@
+Timer is just a basic timer app to remind me to get back to whatever I was doing before I sat down to code for "just fifteen minutes". The main branch is working and stable. The other branches are less so.
