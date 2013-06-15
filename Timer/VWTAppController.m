@@ -17,6 +17,12 @@
 
 @implementation VWTAppController
 
+typedef enum : NSUInteger {
+	Pause = (0x1 << 0), // => 0x00000001
+	Resume = (0x1 << 1), // => 0x00000010
+	Cancel = (0x1 << 2)  // => 0x00000100
+} ControlButtonStatus;
+
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
@@ -31,8 +37,6 @@
     [super windowDidLoad];
 	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
     [self.soundSelector addItemsWithTitles:[VWTSounds getSounds]];
-	
-	
 }
 
 - (IBAction)testSound:(id)sender {
@@ -43,36 +47,39 @@
 	if (!_timer) {
 		_timer = [[VWTTimer alloc]initWithDuration:[[sender title] integerValue] repeats:self.repeats.state];
 		[self.timer setDelegate:self];
-		[self toggleControlButtonsEnabled:YES];
+		
+		ControlButtonStatus status = (Pause | Cancel);
+		[self toggleControlButtons:status];
 	}
 }
 
 -(IBAction)pauseTimer:(id)sender
 {
 	[self.timer stopTimer];
-	[self.pauseButton setEnabled:NO];
-	[self.resumeButton setEnabled:YES];
+	ControlButtonStatus status = (Resume | Cancel);
+	[self toggleControlButtons:status];
 }
 
 - (IBAction)resumeTimer:(id)sender
 {
 	[self.timer startTimer];
-	[self.resumeButton setEnabled:NO];
-	[self.pauseButton setEnabled:YES];
+	ControlButtonStatus status = (Pause | Cancel);
+	[self toggleControlButtons:status];
 }
 
 - (IBAction)cancelTimer:(id)sender {
 	[self.timer stopTimer];
 	self.timeDisplay.stringValue = @"0:00";
-	[self toggleControlButtonsEnabled:NO];
+	ControlButtonStatus status = !(Pause | Resume | Cancel);
+	[self toggleControlButtons:status];
 	[self killTimer];
 }
 
-- (void)toggleControlButtonsEnabled:(BOOL)enabled
+- (void)toggleControlButtons:(ControlButtonStatus)status
 {
-	[self.pauseButton setEnabled:enabled];
-	[self.resumeButton setEnabled:enabled];
-	[self.cancelButton setEnabled:enabled];
+	[self.pauseButton setEnabled:Pause & status];
+	[self.resumeButton setEnabled:Resume & status];
+	[self.cancelButton setEnabled:Cancel & status];
 }
 
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
@@ -82,8 +89,6 @@
 - (void)timerDidFire:(NSString *)timeRemaining
 {
 	[self.timeDisplay setStringValue:timeRemaining];
-	NSLog(@"%@",timeRemaining);
-		
 }
 
 - (void)timerDidComplete
@@ -98,7 +103,6 @@
     notification.soundName = self.soundSelector.titleOfSelectedItem;
 	
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-
 }
 
 - (void)killTimer
