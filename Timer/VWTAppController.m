@@ -109,4 +109,8 @@ typedef enum : NSUInteger {
 {
 	self.timer = nil;
 }
+- (void)showPreferences
+{
+	
+}
 @end

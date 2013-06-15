@@ -9,5 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface VWTAppDelegate : NSObject <NSApplicationDelegate>
+- (IBAction)showPreferences:(id)sender;
 
 @end

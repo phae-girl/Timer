@@ -27,6 +27,6 @@
 
 - (IBAction)cancelTimer:(id)sender;
 
-
+- (void)showPreferences;
 
 @end

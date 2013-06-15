@@ -7,8 +7,6 @@
 //
 
 #import "VWTAppDelegate.h"
-
-
 #import "VWTAppController.h"
 
 @interface VWTAppDelegate () 
@@ -38,4 +36,7 @@
 	return YES;
 }
 
+- (IBAction)showPreferences:(id)sender {
+	[self.appController showPreferences];
+}
 @end
