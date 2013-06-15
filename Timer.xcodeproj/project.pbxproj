@@ -24,8 +24,8 @@
 
 /* Begin PBXFileReference section */
 		ED0469A1176CCBE60092F445 /* timer.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = timer.icns; sourceTree = "<group>"; };
-		ED0469C8176CD0620092F445 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.md; sourceTree = "<group>"; };
-		ED0469C9176CD0620092F445 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file; path = README.md; sourceTree = "<group>"; };
+		ED0469C8176CD0620092F445 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
+		ED0469C9176CD0620092F445 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		ED48DFBA174E8D0200BA095A /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED48DFBD174E8D0200BA095A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		ED48DFC0174E8D0200BA095A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -63,8 +63,6 @@
 		ED48DFB1174E8D0200BA095A = {
 			isa = PBXGroup;
 			children = (
-				ED0469C8176CD0620092F445 /* LICENSE.md */,
-				ED0469C9176CD0620092F445 /* README.md */,
 				ED48DFC3174E8D0200BA095A /* Timer */,
 				ED48DFBC174E8D0200BA095A /* Frameworks */,
 				ED48DFBB174E8D0200BA095A /* Products */,
@@ -113,6 +111,8 @@
 		ED48DFC4174E8D0200BA095A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ED0469C8176CD0620092F445 /* LICENSE.md */,
+				ED0469C9176CD0620092F445 /* README.md */,
 				ED48DFC5174E8D0200BA095A /* Timer-Info.plist */,
 				ED0469A1176CCBE60092F445 /* timer.icns */,
 				ED5FC1D7174FDC4700316344 /* VWTTimer.h */,
