@@ -1,7 +1,8 @@
 Timer
 =====
 
-Just a simple little timer app to remind me to check the stove while I'm coding. Requires OS X 10.8 (Mountain Lion)
+Just a simple little timer app to remind me to check the stove while I'm coding. 
+Requires OS X 10.8 (Mountain Lion)
 
 
 ![Timer Screenshot](http://veganswithtypewriters.net/img/TimerApp.png)
@@ -11,6 +12,7 @@ Just a simple little timer app to remind me to check the stove while I'm coding.
 ##Release Notes
 
 ###V0.6
+2013-06-15
 Thanks to a little luck, I found a decent looking icon at, of all places, Wikipedia. It was made for Wikimedia Commons by [TeeKay][1] and licensed under a Creative Commons Attribution-ShareAlike 2.5 Generic License.
 
 ###V0.5
