@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 @interface VWTAppDelegate : NSObject <NSApplicationDelegate>
+@property (assign) IBOutlet NSWindow *window;
+
 - (IBAction)showPreferences:(id)sender;
 
 @end

@@ -45,7 +45,7 @@
 		ED5FC1DB174FE22800316344 /* VWTSounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTSounds.m; sourceTree = "<group>"; };
 		ED5FC1DD1750568A00316344 /* VWTAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWTAppController.h; sourceTree = "<group>"; };
 		ED5FC1DE1750568A00316344 /* VWTAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTAppController.m; sourceTree = "<group>"; };
-		ED5FC1DF1750568A00316344 /* VWTAppController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VWTAppController.xib; sourceTree = "<group>"; };
+		ED5FC1DF1750568A00316344 /* VWTAppController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VWTAppController.xib; path = Timer/VWTAppController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +63,7 @@
 		ED48DFB1174E8D0200BA095A = {
 			isa = PBXGroup;
 			children = (
+				ED91240D176CDFEB002CC59D /* XIB Files */,
 				ED48DFC3174E8D0200BA095A /* Timer */,
 				ED48DFBC174E8D0200BA095A /* Frameworks */,
 				ED48DFBB174E8D0200BA095A /* Products */,
@@ -102,7 +103,6 @@
 				ED48DFCF174E8D0200BA095A /* VWTAppDelegate.h */,
 				ED48DFD0174E8D0200BA095A /* VWTAppDelegate.m */,
 				ED5FC1E21750569700316344 /* AppController */,
-				ED48DFD2174E8D0300BA095A /* MainMenu.xib */,
 				ED48DFC4174E8D0200BA095A /* Supporting Files */,
 			);
 			path = Timer;
@@ -132,9 +132,17 @@
 			children = (
 				ED5FC1DD1750568A00316344 /* VWTAppController.h */,
 				ED5FC1DE1750568A00316344 /* VWTAppController.m */,
-				ED5FC1DF1750568A00316344 /* VWTAppController.xib */,
 			);
 			name = AppController;
+			sourceTree = "<group>";
+		};
+		ED91240D176CDFEB002CC59D /* XIB Files */ = {
+			isa = PBXGroup;
+			children = (
+				ED5FC1DF1750568A00316344 /* VWTAppController.xib */,
+				ED48DFD2174E8D0300BA095A /* MainMenu.xib */,
+			);
+			name = "XIB Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +247,7 @@
 				ED48DFD3174E8D0300BA095A /* en */,
 			);
 			name = MainMenu.xib;
+			path = Timer;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

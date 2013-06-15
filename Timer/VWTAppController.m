@@ -10,7 +10,7 @@
 #import "VWTSounds.h"
 #import "VWTTimer.h"
 
-@interface VWTAppController () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate>
+@interface VWTAppController () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate, NSWindowDelegate>
 @property (nonatomic) VWTTimer *timer;
 
 @end
@@ -23,11 +23,18 @@ typedef enum : NSUInteger {
 	Cancel = (0x1 << 2)  // => 0x00000100
 } ControlButtonStatus;
 
+
+-(void)awakeFromNib {
+	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+	NSArray *array = [VWTSounds getSounds];
+	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
+	[self.soundSelector addItemsWithTitles:array];
+}
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
     if (self) {
-		[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+		
     }
     return self;
 }
@@ -35,8 +42,7 @@ typedef enum : NSUInteger {
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
-    [self.soundSelector addItemsWithTitles:[VWTSounds getSounds]];
+	
 }
 
 - (IBAction)testSound:(id)sender {
