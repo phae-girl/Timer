@@ -194,7 +194,7 @@
 							<object class="NSButtonCell" key="NSCell" id="26234798">
 								<int key="NSCellFlags">67108864</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">1</string>
+								<string key="NSContents">5</string>
 								<reference key="NSSupport" ref="440271905"/>
 								<string key="NSCellIdentifier">_NS:9</string>
 								<reference key="NSControlView" ref="622388714"/>
