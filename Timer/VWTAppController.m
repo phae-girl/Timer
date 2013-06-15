@@ -32,6 +32,7 @@
 	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
     [self.soundSelector addItemsWithTitles:[VWTSounds getSounds]];
 	
+	
 }
 
 - (IBAction)testSound:(id)sender {
@@ -40,25 +41,31 @@
 
 - (IBAction)startTimer:(id)sender {
 	if (!_timer) {
-		_timer = [[VWTTimer alloc]initWithDuration:[[sender title] integerValue]];
+		_timer = [[VWTTimer alloc]initWithDuration:[[sender title] integerValue] repeats:self.repeats.state];
 		[self.timer setDelegate:self];
 		[self toggleControlButtonsEnabled:YES];
 	}
 }
 
-- (IBAction)timerAction:(id)sender {
-	if ([[sender title] isEqualToString:@"Pause"]) {
-		[self.timer stopTimer];
-			}
-	else if ([[sender title] isEqualToString:@"Resume"]){
-		[self.timer startTimer];
-	}
-	else {
-		[self.timer stopTimer];
-		self.timer = nil;
-		self.timeDisplay.stringValue = @"0:00";
-		[self toggleControlButtonsEnabled:NO];
-	}
+-(IBAction)pauseTimer:(id)sender
+{
+	[self.timer stopTimer];
+	[self.pauseButton setEnabled:NO];
+	[self.resumeButton setEnabled:YES];
+}
+
+- (IBAction)resumeTimer:(id)sender
+{
+	[self.timer startTimer];
+	[self.resumeButton setEnabled:NO];
+	[self.pauseButton setEnabled:YES];
+}
+
+- (IBAction)cancelTimer:(id)sender {
+	[self.timer stopTimer];
+	self.timeDisplay.stringValue = @"0:00";
+	[self toggleControlButtonsEnabled:NO];
+	[self killTimer];
 }
 
 - (void)toggleControlButtonsEnabled:(BOOL)enabled
@@ -75,12 +82,15 @@
 - (void)timerDidFire:(NSString *)timeRemaining
 {
 	[self.timeDisplay setStringValue:timeRemaining];
+	NSLog(@"%@",timeRemaining);
 		
 }
 
 - (void)timerDidComplete
 {
-	self.timer = nil;
+	if (!self.timer.repeats) {
+		[self killTimer];
+	}
 	
 	NSUserNotification *notification = [[NSUserNotification alloc] init];
     notification.title = @"Timer Complete!";
@@ -91,4 +101,8 @@
 
 }
 
+- (void)killTimer
+{
+	self.timer = nil;
+}
 @end

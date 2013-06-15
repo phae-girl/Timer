@@ -11,18 +11,21 @@
 @interface VWTTimer ()
 @property (weak, nonatomic) NSTimer *timer;
 @property (copy, nonatomic) NSMutableArray *sounds;
-@property NSInteger minutesRemaining, secondsRemaining;
+@property (nonatomic) NSInteger minutes, seconds, minutesRemaining, secondsRemaining;
 
 @end
 
 @implementation VWTTimer
 
--(id)initWithDuration:(NSInteger)minutes
+-(id)initWithDuration:(NSInteger)minutes repeats:(BOOL)repeats
 {
 	self = [super init];
 	if (self) {
+		_minutes = minutes;
+		_seconds = 0;
 		_minutesRemaining = minutes;
 		_secondsRemaining = 0;
+		_repeats = repeats;
 		[self startTimer];
 	}
 	return self;
@@ -44,6 +47,11 @@
 		if(self.minutesRemaining>-1)
 			[self.delegate timerDidFire:[NSString stringWithFormat:@"%li:%02li", self.minutesRemaining, self.secondsRemaining]];
 	}
+	else if (self.repeats) {
+		self.minutesRemaining = self.minutes;
+		self.secondsRemaining = 0;
+		[self.delegate timerDidComplete];
+	}
 	
     else
     {
@@ -60,7 +68,7 @@
 - (void)startTimer
 {
 	if (!_timer)
-		_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+		_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
 }
 
 @end
