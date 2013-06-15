@@ -23,6 +23,15 @@ typedef enum : NSUInteger {
 	Cancel = (0x1 << 2)  // => 0x00000100
 } ControlButtonStatus;
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        NSLog(@"%s",__PRETTY_FUNCTION__);
+    }
+    return self;
+}
+
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
