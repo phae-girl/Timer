@@ -16,10 +16,10 @@
 @end
 
 @interface VWTTimer : NSObject
-
+@property (nonatomic) BOOL repeats;
 @property (weak, nonatomic) NSObject <VWTTimerDelegateProtocol> *delegate;
 
-- (id)initWithDuration:(NSInteger)minutes;
+- (id)initWithDuration:(NSInteger)minutes repeats:(BOOL)repeats;
 
 - (void)stopTimer;
 - (void)startTimer;

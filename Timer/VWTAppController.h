@@ -10,16 +10,22 @@
 
 @interface VWTAppController : NSWindowController
 
-@property (weak) IBOutlet NSPopUpButton *soundSelector;
-@property (weak) IBOutlet NSTextField *timeDisplay;
-@property (weak) IBOutlet NSButton *pauseButton;
-@property (weak) IBOutlet NSButton *resumeButton;
-@property (weak) IBOutlet NSButton *cancelButton;
+@property (nonatomic, weak) IBOutlet NSPopUpButton *soundSelector;
+@property (nonatomic, weak) IBOutlet NSTextField *timeDisplay;
+@property (nonatomic, weak) IBOutlet NSButton *pauseButton;
+@property (nonatomic, weak) IBOutlet NSButton *resumeButton;
+@property (nonatomic, weak) IBOutlet NSButton *cancelButton;
+@property (nonatomic, weak) IBOutlet NSButton *repeats;
+
 
 
 - (IBAction)testSound:(id)sender;
 - (IBAction)startTimer:(id)sender;
-- (IBAction)timerAction:(id)sender;
+
+- (IBAction)pauseTimer:(id)sender;
+- (IBAction)resumeTimer:(id)sender;
+
+- (IBAction)cancelTimer:(id)sender;
 
 
 
