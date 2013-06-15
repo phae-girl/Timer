@@ -37,8 +37,6 @@ typedef enum : NSUInteger {
     [super windowDidLoad];
 	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
     [self.soundSelector addItemsWithTitles:[VWTSounds getSounds]];
-	
-	
 }
 
 - (IBAction)testSound:(id)sender {
@@ -76,12 +74,14 @@ typedef enum : NSUInteger {
 	[self toggleControlButtons:status];
 	[self killTimer];
 }
+
 - (void)toggleControlButtons:(ControlButtonStatus)status
 {
 	[self.pauseButton setEnabled:Pause & status];
 	[self.resumeButton setEnabled:Resume & status];
 	[self.cancelButton setEnabled:Cancel & status];
 }
+
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
     return YES;
 }
@@ -89,7 +89,6 @@ typedef enum : NSUInteger {
 - (void)timerDidFire:(NSString *)timeRemaining
 {
 	[self.timeDisplay setStringValue:timeRemaining];
-		
 }
 
 - (void)timerDidComplete
@@ -104,7 +103,6 @@ typedef enum : NSUInteger {
     notification.soundName = self.soundSelector.titleOfSelectedItem;
 	
     [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-
 }
 
 - (void)killTimer
