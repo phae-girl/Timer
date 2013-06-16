@@ -8,35 +8,40 @@
 
 #import "VWTPrefController.h"
 
+@interface VWTPrefController ()
+@property (nonatomic) NSUserDefaults *defaults;
+@end
+
 @implementation VWTPrefController
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        NSLog(@"Yipee!! %s",__PRETTY_FUNCTION__);
+        _defaults = [NSUserDefaults standardUserDefaults];
     }
     return self;
 }
+
 - (void)awakeFromNib
 {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	if ([defaults objectForKey:@"customMessage"]){
-		self.customMessage = [defaults objectForKey:@"customMessage"];
-		self.checkbox = [defaults boolForKey:@"sendMessage"];
+	if ([self.defaults objectForKey:@"customMessage"]){
+		self.customMessage = [self.defaults objectForKey:@"customMessage"];
+		self.checkbox = [self.defaults boolForKey:@"sendNotification"];
 	}
 }
+
 - (IBAction)saveAndClose:(id)sender
 {
+	[self.defaults setBool:self.checkbox forKey:@"sendNotification"];
+	[self.defaults setObject:self.customMessage forKey:@"customMessage"];
+	[self.defaults synchronize];
 	
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setBool:self.checkbox forKey:@"sendNotification"];
-	[defaults setObject:self.customMessage forKey:@"customMessage"];
-	[defaults synchronize];
-	
-	NSLog(@"%ld",(long)self.checkbox);
-	NSLog(@"%@",self.customMessage);
-	NSLog(@"Yipee!! %s",__PRETTY_FUNCTION__);
+	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"prefsSheetShouldClose" object:self]];
+}
+
+- (IBAction)cancelChanges:(id)sender
+{
 	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"prefsSheetShouldClose" object:self]];
 }
 @end

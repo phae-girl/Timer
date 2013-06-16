@@ -11,7 +11,7 @@
 #import "VWTTimer.h"
 #import "VWTPrefController.h"
 
-@interface VWTAppController () <VWTTimerDelegateProtocol, /* NSUserNotificationCenterDelegate, */ NSWindowDelegate>
+@interface VWTAppController () <VWTTimerDelegateProtocol, NSWindowDelegate, NSUserNotificationCenterDelegate>
 @property (nonatomic) VWTTimer *timer;
 @property (nonatomic) VWTPrefController *prefsController;
 
@@ -27,7 +27,7 @@ typedef enum : NSUInteger {
 
 
 -(void)awakeFromNib {
-	//[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 	NSArray *array = [VWTSounds getSounds];
 	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
 	[self.soundSelector addItemsWithTitles:array];
@@ -79,10 +79,6 @@ typedef enum : NSUInteger {
 	[self.cancelButton setEnabled:Cancel & status];
 }
 
-- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
-    return YES;
-}
-
 - (void)timerDidFire:(NSString *)timeRemaining
 {
 	[self.timeDisplay setStringValue:timeRemaining];
@@ -94,8 +90,12 @@ typedef enum : NSUInteger {
 		[self killTimer];
 	}
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setBool:self.repeats.state forKey:@"repeats"];
+	[defaults synchronize];
 	
-	if ([defaults boolForKey:@"sendNotification"]) {
+	BOOL sendNotification = [defaults boolForKey:@"sendNotification"];
+	
+	if (sendNotification) {
 		NSUserNotification *notification = [[NSUserNotification alloc] init];
 		notification.title = @"Timer Complete!";
 		notification.informativeText = [defaults objectForKey:@"customMessage"];
@@ -111,20 +111,25 @@ typedef enum : NSUInteger {
 	[self.timer stopTimer];
 	self.timer = nil;
 }
+
 - (IBAction)showPreferences:(id)sender
 {
 	if (!_preferencesSheet)
 		[NSBundle loadNibNamed:@"Preferences" owner:self];
 	[NSApp beginSheet:self.preferencesSheet modalForWindow:[[NSApp delegate]window] modalDelegate:self didEndSelector:NULL contextInfo:NULL];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-											 selector:@selector(closePrefsSheet)
-												 name:@"prefsSheetShouldClose" object:nil];
-
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePrefsSheet) name:@"prefsSheetShouldClose" object:nil];
 }
+
 - (void)closePrefsSheet
 {
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[NSApp endSheet:self.preferencesSheet];
 	[self.preferencesSheet close];
 	self.preferencesSheet = nil;
 }
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
+    return YES;
+}
+
 @end
