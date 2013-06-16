@@ -38,7 +38,7 @@
 			<object class="NSCustomObject" id="1004">
 				<string key="NSClassName">NSApplication</string>
 			</object>
-			<object class="NSCustomObject" id="650650055">
+			<object class="NSCustomObject" id="428810442">
 				<string key="NSClassName">VWTPrefController</string>
 			</object>
 			<object class="NSWindowTemplate" id="1005">
@@ -477,21 +477,13 @@
 					<int key="connectionID">4</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">closeSheet:</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="273645280"/>
-					</object>
-					<int key="connectionID">13</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: self.checkbox</string>
 						<reference key="source" ref="625019879"/>
-						<reference key="destination" ref="650650055"/>
+						<reference key="destination" ref="428810442"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="625019879"/>
-							<reference key="NSDestination" ref="650650055"/>
+							<reference key="NSDestination" ref="428810442"/>
 							<string key="NSLabel">value: self.checkbox</string>
 							<string key="NSBinding">value</string>
 							<string key="NSKeyPath">self.checkbox</string>
@@ -504,10 +496,10 @@
 					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: self.customMessage</string>
 						<reference key="source" ref="218783574"/>
-						<reference key="destination" ref="650650055"/>
+						<reference key="destination" ref="428810442"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="218783574"/>
-							<reference key="NSDestination" ref="650650055"/>
+							<reference key="NSDestination" ref="428810442"/>
 							<string key="NSLabel">value: self.customMessage</string>
 							<string key="NSBinding">value</string>
 							<string key="NSKeyPath">self.customMessage</string>
@@ -523,10 +515,10 @@
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">saveAndClose:</string>
-						<reference key="source" ref="650650055"/>
-						<reference key="destination" ref="681835055"/>
+						<reference key="source" ref="428810442"/>
+						<reference key="destination" ref="273645280"/>
 					</object>
-					<int key="connectionID">212</int>
+					<int key="connectionID">215</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1680,7 +1672,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">210</int>
-						<reference key="object" ref="650650055"/>
+						<reference key="object" ref="428810442"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</array>
@@ -1845,7 +1837,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">214</int>
+			<int key="maxID">215</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

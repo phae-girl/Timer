@@ -31,6 +31,6 @@
 
 - (IBAction)showPreferences:(id)sender;
 
-- (IBAction)closeSheet:(id)sender;
+
 
 @end

@@ -9,10 +9,11 @@
 #import "VWTAppController.h"
 #import "VWTSounds.h"
 #import "VWTTimer.h"
+#import "VWTPrefController.h"
 
-
-@interface VWTAppController () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate, NSWindowDelegate>
+@interface VWTAppController () <VWTTimerDelegateProtocol, /* NSUserNotificationCenterDelegate, */ NSWindowDelegate>
 @property (nonatomic) VWTTimer *timer;
+@property (nonatomic) VWTPrefController *prefsController;
 
 @end
 
@@ -26,7 +27,7 @@ typedef enum : NSUInteger {
 
 
 -(void)awakeFromNib {
-	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+	//[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 	NSArray *array = [VWTSounds getSounds];
 	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
 	[self.soundSelector addItemsWithTitles:array];
@@ -115,9 +116,12 @@ typedef enum : NSUInteger {
 	if (!_preferencesSheet)
 		[NSBundle loadNibNamed:@"Preferences" owner:self];
 	[NSApp beginSheet:self.preferencesSheet modalForWindow:[[NSApp delegate]window] modalDelegate:self didEndSelector:NULL contextInfo:NULL];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(closePrefsSheet)
+												 name:@"prefsSheetShouldClose" object:nil];
 
 }
-- (IBAction)closeSheet:(id)sender
+- (void)closePrefsSheet
 {
 	[NSApp endSheet:self.preferencesSheet];
 	[self.preferencesSheet close];

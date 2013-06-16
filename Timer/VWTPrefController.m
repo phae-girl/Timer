@@ -28,6 +28,7 @@
 }
 - (IBAction)saveAndClose:(id)sender
 {
+	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setBool:self.checkbox forKey:@"sendNotification"];
 	[defaults setObject:self.customMessage forKey:@"customMessage"];
@@ -36,5 +37,6 @@
 	NSLog(@"%ld",(long)self.checkbox);
 	NSLog(@"%@",self.customMessage);
 	NSLog(@"Yipee!! %s",__PRETTY_FUNCTION__);
+	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"prefsSheetShouldClose" object:self]];
 }
 @end
