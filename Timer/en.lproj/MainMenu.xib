@@ -320,13 +320,14 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 529}, {106, 67}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="928011467"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="177889212">
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">5:00</string>
+								<string key="NSContents">1:00</string>
 								<object class="NSFont" key="NSSupport" id="253257987">
 									<string key="NSName">HelveticaNeue</string>
 									<double key="NSSize">20</double>
@@ -348,6 +349,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{137, 529}, {106, 67}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="731880713"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
@@ -372,6 +374,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{254, 529}, {106, 67}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="723145397"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
@@ -396,6 +399,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 456}, {106, 67}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="403597948"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
@@ -420,6 +424,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{137, 456}, {106, 67}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="191260989"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
@@ -444,6 +449,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{254, 456}, {106, 67}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="44017254"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
@@ -468,6 +474,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{53, 417}, {76, 21}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="42731485"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
@@ -508,6 +515,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{252, 417}, {67, 20}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="1022300225"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
@@ -539,6 +547,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{36, 253}, {309, 144}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="371257685"/>
 							<string key="NSReuseIdentifierKey">_NS:1535</string>
 							<bool key="NSEnabled">YES</bool>
@@ -563,6 +572,8 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 19}, {340, 62}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="3671886">
@@ -586,6 +597,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 155}, {340, 62}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="83658169"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
@@ -610,6 +622,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{20, 87}, {340, 62}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="134270551"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
@@ -634,6 +647,7 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{135, 414}, {111, 26}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
+							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="490358763"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
@@ -671,6 +685,7 @@
 					</array>
 					<string key="NSFrameSize">{380, 615}</string>
 					<reference key="NSSuperview"/>
+					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="466267464"/>
 					<string key="NSReuseIdentifierKey">_NS:20</string>
 				</object>
@@ -2528,7 +2543,123 @@
 			<nil key="sourceID"/>
 			<int key="maxID">857</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes"/>
+		<object class="IBClassDescriber" key="IBDocument.Classes">
+			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
+				<object class="IBPartialClassDescription">
+					<string key="className">NSLayoutConstraint</string>
+					<string key="superclassName">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/NSLayoutConstraint.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">VWTAppController</string>
+					<string key="superclassName">NSObject</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="cancelTimer:">id</string>
+						<string key="closeSheet:">id</string>
+						<string key="pauseTimer:">id</string>
+						<string key="resumeTimer:">id</string>
+						<string key="showPreferences:">id</string>
+						<string key="startTimer:">id</string>
+						<string key="testSound:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="cancelTimer:">
+							<string key="name">cancelTimer:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="closeSheet:">
+							<string key="name">closeSheet:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="pauseTimer:">
+							<string key="name">pauseTimer:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="resumeTimer:">
+							<string key="name">resumeTimer:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showPreferences:">
+							<string key="name">showPreferences:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="startTimer:">
+							<string key="name">startTimer:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="testSound:">
+							<string key="name">testSound:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="cancelButton">NSButton</string>
+						<string key="pauseButton">NSButton</string>
+						<string key="preferencesSheet">NSWindow</string>
+						<string key="repeats">NSButton</string>
+						<string key="resumeButton">NSButton</string>
+						<string key="soundSelector">NSPopUpButton</string>
+						<string key="timeDisplay">NSTextField</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="cancelButton">
+							<string key="name">cancelButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="pauseButton">
+							<string key="name">pauseButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="preferencesSheet">
+							<string key="name">preferencesSheet</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="repeats">
+							<string key="name">repeats</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="resumeButton">
+							<string key="name">resumeButton</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="soundSelector">
+							<string key="name">soundSelector</string>
+							<string key="candidateClassName">NSPopUpButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="timeDisplay">
+							<string key="name">timeDisplay</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
+					</dictionary>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/VWTAppController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">VWTAppDelegate</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">window</string>
+						<string key="NS.object.0">NSWindow</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">window</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">window</string>
+							<string key="candidateClassName">NSWindow</string>
+						</object>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">./Classes/VWTAppDelegate.h</string>
+					</object>
+				</object>
+			</array>
+		</object>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

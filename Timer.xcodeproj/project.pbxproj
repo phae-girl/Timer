@@ -10,6 +10,7 @@
 		ED0469A2176CCBE60092F445 /* timer.icns in Resources */ = {isa = PBXBuildFile; fileRef = ED0469A1176CCBE60092F445 /* timer.icns */; };
 		ED0469CA176CD0620092F445 /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = ED0469C8176CD0620092F445 /* LICENSE.md */; };
 		ED0469CB176CD0620092F445 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ED0469C9176CD0620092F445 /* README.md */; };
+		ED152841176D63E6003E603B /* VWTPrefController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED152840176D63E6003E603B /* VWTPrefController.m */; };
 		ED48DFBE174E8D0200BA095A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED48DFBD174E8D0200BA095A /* Cocoa.framework */; };
 		ED48DFC8174E8D0200BA095A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ED48DFC6174E8D0200BA095A /* InfoPlist.strings */; };
 		ED48DFCA174E8D0200BA095A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED48DFC9174E8D0200BA095A /* main.m */; };
@@ -26,6 +27,8 @@
 		ED0469A1176CCBE60092F445 /* timer.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = timer.icns; sourceTree = "<group>"; };
 		ED0469C8176CD0620092F445 /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE.md; path = ../LICENSE.md; sourceTree = "<group>"; };
 		ED0469C9176CD0620092F445 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		ED15283F176D63E6003E603B /* VWTPrefController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWTPrefController.h; sourceTree = "<group>"; };
+		ED152840176D63E6003E603B /* VWTPrefController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTPrefController.m; sourceTree = "<group>"; };
 		ED48DFBA174E8D0200BA095A /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED48DFBD174E8D0200BA095A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		ED48DFC0174E8D0200BA095A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -60,6 +63,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ED15283D176D6369003E603B /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				ED5FC1D7174FDC4700316344 /* VWTTimer.h */,
+				ED5FC1D8174FDC4700316344 /* VWTTimer.m */,
+			);
+			name = Timer;
+			sourceTree = "<group>";
+		};
+		ED15283E176D637A003E603B /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				ED5FC1DA174FE22800316344 /* VWTSounds.h */,
+				ED5FC1DB174FE22800316344 /* VWTSounds.m */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		ED152842176D63EB003E603B /* PrefsController */ = {
+			isa = PBXGroup;
+			children = (
+				ED15283F176D63E6003E603B /* VWTPrefController.h */,
+				ED152840176D63E6003E603B /* VWTPrefController.m */,
+			);
+			name = PrefsController;
+			sourceTree = "<group>";
+		};
 		ED48DFB1174E8D0200BA095A = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +133,9 @@
 				ED48DFCF174E8D0200BA095A /* VWTAppDelegate.h */,
 				ED48DFD0174E8D0200BA095A /* VWTAppDelegate.m */,
 				ED5FC1E21750569700316344 /* AppController */,
+				ED152842176D63EB003E603B /* PrefsController */,
+				ED15283E176D637A003E603B /* Sounds */,
+				ED15283D176D6369003E603B /* Timer */,
 				ED48DFC4174E8D0200BA095A /* Supporting Files */,
 			);
 			path = Timer;
@@ -115,10 +148,6 @@
 				ED0469C9176CD0620092F445 /* README.md */,
 				ED48DFC5174E8D0200BA095A /* Timer-Info.plist */,
 				ED0469A1176CCBE60092F445 /* timer.icns */,
-				ED5FC1D7174FDC4700316344 /* VWTTimer.h */,
-				ED5FC1D8174FDC4700316344 /* VWTTimer.m */,
-				ED5FC1DA174FE22800316344 /* VWTSounds.h */,
-				ED5FC1DB174FE22800316344 /* VWTSounds.m */,
 				ED48DFC6174E8D0200BA095A /* InfoPlist.strings */,
 				ED48DFC9174E8D0200BA095A /* main.m */,
 				ED48DFCB174E8D0200BA095A /* Timer-Prefix.pch */,
@@ -219,6 +248,7 @@
 				ED5FC1D9174FDC4700316344 /* VWTTimer.m in Sources */,
 				ED5FC1DC174FE22800316344 /* VWTSounds.m in Sources */,
 				ED5FC1E01750568A00316344 /* VWTAppController.m in Sources */,
+				ED152841176D63E6003E603B /* VWTPrefController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

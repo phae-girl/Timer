@@ -10,6 +10,7 @@
 #import "VWTSounds.h"
 #import "VWTTimer.h"
 
+
 @interface VWTAppController () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate, NSWindowDelegate>
 @property (nonatomic) VWTTimer *timer;
 
@@ -29,15 +30,19 @@ typedef enum : NSUInteger {
 	NSArray *array = [VWTSounds getSounds];
 	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
 	[self.soundSelector addItemsWithTitles:array];
+	NSString *lastSound = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastSoundSelected"];
+	[self.soundSelector selectItemWithTitle:lastSound];
 }
 
 - (IBAction)testSound:(id)sender {
 	[[NSSound soundNamed:self.soundSelector.titleOfSelectedItem]play];
+	[[NSUserDefaults standardUserDefaults] setObject:self.soundSelector.titleOfSelectedItem forKey:@"lastSoundSelected"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (IBAction)startTimer:(id)sender {
 	if (!_timer) {
-		_timer = [[VWTTimer alloc]initWithDuration:[[sender title] integerValue] repeats:self.repeats.state];
+		_timer = [[VWTTimer alloc]initWithDuration:[[sender title] integerValue]];
 		[self.timer setDelegate:self];
 		
 		ControlButtonStatus status = (Pause | Cancel);
@@ -60,11 +65,10 @@ typedef enum : NSUInteger {
 }
 
 - (IBAction)cancelTimer:(id)sender {
-	[self.timer stopTimer];
+	[self killTimer];
 	self.timeDisplay.stringValue = @"0:00";
 	ControlButtonStatus status = !(Pause | Resume | Cancel);
 	[self toggleControlButtons:status];
-	[self killTimer];
 }
 
 - (void)toggleControlButtons:(ControlButtonStatus)status
@@ -85,20 +89,25 @@ typedef enum : NSUInteger {
 
 - (void)timerDidComplete
 {
-	if (!self.timer.repeats) {
+	if (!self.repeats.state) {
 		[self killTimer];
 	}
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
-	NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = @"Timer Complete!";
-    //notification.informativeText = [NSString stringWithFormat:@"It's been %li minutes", self.duration];
-    notification.soundName = self.soundSelector.titleOfSelectedItem;
-	
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+	if ([defaults boolForKey:@"sendNotification"]) {
+		NSUserNotification *notification = [[NSUserNotification alloc] init];
+		notification.title = @"Timer Complete!";
+		notification.informativeText = [defaults objectForKey:@"customMessage"];
+		notification.soundName = self.soundSelector.titleOfSelectedItem;
+		[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+	}
+	else if (self.soundSelector.titleOfSelectedItem)
+		[[NSSound soundNamed:self.soundSelector.titleOfSelectedItem]play];
 }
 
 - (void)killTimer
 {
+	[self.timer stopTimer];
 	self.timer = nil;
 }
 - (IBAction)showPreferences:(id)sender

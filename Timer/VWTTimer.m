@@ -17,7 +17,7 @@
 
 @implementation VWTTimer
 
--(id)initWithDuration:(NSInteger)minutes repeats:(BOOL)repeats
+-(id)initWithDuration:(NSInteger)minutes
 {
 	self = [super init];
 	if (self) {
@@ -25,7 +25,7 @@
 		_seconds = 0;
 		_minutesRemaining = minutes;
 		_secondsRemaining = 0;
-		_repeats = repeats;
+		_repeats = YES;
 		[self startTimer];
 	}
 	return self;
@@ -68,7 +68,7 @@
 - (void)startTimer
 {
 	if (!_timer)
-		_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+		_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
 }
 
 @end
