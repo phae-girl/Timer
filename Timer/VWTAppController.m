@@ -30,20 +30,6 @@ typedef enum : NSUInteger {
 	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
 	[self.soundSelector addItemsWithTitles:array];
 }
-- (id)initWithWindow:(NSWindow *)window
-{
-    self = [super initWithWindow:window];
-    if (self) {
-		
-    }
-    return self;
-}
-
-- (void)windowDidLoad
-{
-    [super windowDidLoad];
-	
-}
 
 - (IBAction)testSound:(id)sender {
 	[[NSSound soundNamed:self.soundSelector.titleOfSelectedItem]play];
@@ -115,8 +101,17 @@ typedef enum : NSUInteger {
 {
 	self.timer = nil;
 }
-- (void)showPreferences
+- (IBAction)showPreferences:(id)sender
 {
-	
+	if (!_preferencesSheet)
+		[NSBundle loadNibNamed:@"Preferences" owner:self];
+	[NSApp beginSheet:self.preferencesSheet modalForWindow:[[NSApp delegate]window] modalDelegate:self didEndSelector:NULL contextInfo:NULL];
+
+}
+- (IBAction)closeSheet:(id)sender
+{
+	[NSApp endSheet:self.preferencesSheet];
+	[self.preferencesSheet close];
+	self.preferencesSheet = nil;
 }
 @end

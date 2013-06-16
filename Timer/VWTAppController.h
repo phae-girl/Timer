@@ -8,7 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface VWTAppController : NSWindowController
+@interface VWTAppController : NSObject
+
+@property (nonatomic, assign) IBOutlet NSWindow *preferencesSheet;
 
 @property (nonatomic, weak) IBOutlet NSPopUpButton *soundSelector;
 @property (nonatomic, weak) IBOutlet NSTextField *timeDisplay;
@@ -27,6 +29,8 @@
 
 - (IBAction)cancelTimer:(id)sender;
 
-- (void)showPreferences;
+- (IBAction)showPreferences:(id)sender;
+
+- (IBAction)closeSheet:(id)sender;
 
 @end

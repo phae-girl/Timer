@@ -26,17 +26,7 @@
 
 -(BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
 {
-	if (!_appController) {
-		_appController = [[VWTAppController alloc]initWithWindowNibName:@"VWTAppController"];
-		[self.appController showWindow:self.appController];
-	}
-	else {
-		[self.appController showWindow:self.appController];
-	}
 	return YES;
 }
 
-- (IBAction)showPreferences:(id)sender {
-	[self.appController showPreferences];
-}
 @end
