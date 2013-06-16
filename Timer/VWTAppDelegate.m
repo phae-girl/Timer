@@ -7,21 +7,12 @@
 //
 
 #import "VWTAppDelegate.h"
-#import "VWTAppController.h"
-
-@interface VWTAppDelegate () 
-@property VWTAppController *appController;
-
-@end
 
 @implementation VWTAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-//	if (!_appController) {
-//		_appController = [[VWTAppController alloc]initWithWindowNibName:@"VWTAppController"];
-//		[self.appController showWindow:self.appController];
-//	}
+
 }
 
 -(BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag

@@ -19,7 +19,7 @@
 @property (nonatomic) BOOL repeats;
 @property (weak, nonatomic) NSObject <VWTTimerDelegateProtocol> *delegate;
 
-- (id)initWithDuration:(NSInteger)minutes repeats:(BOOL)repeats;
+- (id)initWithDuration:(NSInteger)minutes;
 
 - (void)stopTimer;
 - (void)startTimer;

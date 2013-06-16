@@ -7,9 +7,18 @@ Requires OS X 10.8 (Mountain Lion)
 
 ![Timer Screenshot](http://veganswithtypewriters.net/img/TimerApp.png)
 
----
+
 
 ##Release Notes
+
+###V0.7
+June 16, 2013
+
+####Features Added
+- Added a preference panel and hooked up the ability to trun notifications on and off as well as set custom notification messages.
+
+####Bug Fixes
+- Fixed a bug that would prevent the timer from stopping if the repeats checkbox was unchecked after the timer as started.
 
 ###V0.6
 2013-06-15
