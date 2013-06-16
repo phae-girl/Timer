@@ -9,9 +9,11 @@
 #import "VWTAppController.h"
 #import "VWTSounds.h"
 #import "VWTTimer.h"
+#import "VWTPrefController.h"
 
-@interface VWTAppController () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate>
+@interface VWTAppController () <VWTTimerDelegateProtocol, NSWindowDelegate, NSUserNotificationCenterDelegate>
 @property (nonatomic) VWTTimer *timer;
+@property (nonatomic) VWTPrefController *prefsController;
 
 @end
 
@@ -23,29 +25,25 @@ typedef enum : NSUInteger {
 	Cancel = (0x1 << 2)  // => 0x00000100
 } ControlButtonStatus;
 
-- (id)initWithWindow:(NSWindow *)window
-{
-    self = [super initWithWindow:window];
-    if (self) {
-		[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
-    }
-    return self;
-}
 
-- (void)windowDidLoad
-{
-    [super windowDidLoad];
+-(void)awakeFromNib {
+	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+	NSArray *array = [VWTSounds getSounds];
 	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
-    [self.soundSelector addItemsWithTitles:[VWTSounds getSounds]];
+	[self.soundSelector addItemsWithTitles:array];
+	NSString *lastSound = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastSoundSelected"];
+	[self.soundSelector selectItemWithTitle:lastSound];
 }
 
 - (IBAction)testSound:(id)sender {
 	[[NSSound soundNamed:self.soundSelector.titleOfSelectedItem]play];
+	[[NSUserDefaults standardUserDefaults] setObject:self.soundSelector.titleOfSelectedItem forKey:@"lastSoundSelected"];
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (IBAction)startTimer:(id)sender {
 	if (!_timer) {
-		_timer = [[VWTTimer alloc]initWithDuration:[[sender title] integerValue] repeats:self.repeats.state];
+		_timer = [[VWTTimer alloc]initWithDuration:[[sender title] integerValue]];
 		[self.timer setDelegate:self];
 		
 		ControlButtonStatus status = (Pause | Cancel);
@@ -68,11 +66,10 @@ typedef enum : NSUInteger {
 }
 
 - (IBAction)cancelTimer:(id)sender {
-	[self.timer stopTimer];
+	[self killTimer];
 	self.timeDisplay.stringValue = @"0:00";
 	ControlButtonStatus status = !(Pause | Resume | Cancel);
 	[self toggleControlButtons:status];
-	[self killTimer];
 }
 
 - (void)toggleControlButtons:(ControlButtonStatus)status
@@ -82,10 +79,6 @@ typedef enum : NSUInteger {
 	[self.cancelButton setEnabled:Cancel & status];
 }
 
-- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
-    return YES;
-}
-
 - (void)timerDidFire:(NSString *)timeRemaining
 {
 	[self.timeDisplay setStringValue:timeRemaining];
@@ -93,20 +86,50 @@ typedef enum : NSUInteger {
 
 - (void)timerDidComplete
 {
-	if (!self.timer.repeats) {
+	if (!self.repeats.state) {
 		[self killTimer];
 	}
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setBool:self.repeats.state forKey:@"repeats"];
+	[defaults synchronize];
 	
-	NSUserNotification *notification = [[NSUserNotification alloc] init];
-    notification.title = @"Timer Complete!";
-    //notification.informativeText = [NSString stringWithFormat:@"It's been %li minutes", self.duration];
-    notification.soundName = self.soundSelector.titleOfSelectedItem;
+	BOOL sendNotification = [defaults boolForKey:@"sendNotification"];
 	
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+	if (sendNotification) {
+		NSUserNotification *notification = [[NSUserNotification alloc] init];
+		notification.title = @"Timer Complete!";
+		notification.informativeText = [defaults objectForKey:@"customMessage"];
+		notification.soundName = self.soundSelector.titleOfSelectedItem;
+		[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+	}
+	else if (self.soundSelector.titleOfSelectedItem)
+		[[NSSound soundNamed:self.soundSelector.titleOfSelectedItem]play];
 }
 
 - (void)killTimer
 {
+	[self.timer stopTimer];
 	self.timer = nil;
 }
+
+- (IBAction)showPreferences:(id)sender
+{
+	if (!_preferencesSheet)
+		[NSBundle loadNibNamed:@"Preferences" owner:self];
+	[NSApp beginSheet:self.preferencesSheet modalForWindow:[[NSApp delegate]window] modalDelegate:self didEndSelector:NULL contextInfo:NULL];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePrefsSheet) name:@"prefsSheetShouldClose" object:nil];
+}
+
+- (void)closePrefsSheet
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[NSApp endSheet:self.preferencesSheet];
+	[self.preferencesSheet close];
+	self.preferencesSheet = nil;
+}
+
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
+    return YES;
+}
+
 @end
