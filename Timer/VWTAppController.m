@@ -94,6 +94,11 @@ typedef enum : NSUInteger {
 	[defaults synchronize];
 	
 	BOOL sendNotification = [defaults boolForKey:@"sendNotification"];
+	BOOL speakNotification = [defaults boolForKey:@"speakNotification"];
+	if (speakNotification) {
+		NSSpeechSynthesizer *synthesizer = [[NSSpeechSynthesizer alloc]initWithVoice:nil];
+		[synthesizer startSpeakingString:[defaults objectForKey:@"customMessage"]];
+	}
 	
 	if (sendNotification) {
 		NSUserNotification *notification = [[NSUserNotification alloc] init];

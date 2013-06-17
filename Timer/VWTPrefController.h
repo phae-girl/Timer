@@ -10,7 +10,7 @@
 
 @interface VWTPrefController : NSObject
 
-@property (assign, nonatomic) NSInteger checkbox;
+@property (assign, nonatomic) NSInteger sendAlertMessage, speakMessage;
 @property (copy, nonatomic) NSString *customMessage;
 
 - (IBAction)saveAndClose:(id)sender;
