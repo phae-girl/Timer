@@ -7,6 +7,7 @@
 //
 
 #import "VWTTimer.h"
+#import "VWTdevSettingsController.h"
 
 @interface VWTTimer ()
 @property (weak, nonatomic) NSTimer *timer;
@@ -67,8 +68,11 @@
 
 - (void)startTimer
 {
+	VWTdevSettingsController *settings = [[VWTdevSettingsController alloc]init];
+	double frequency = [[settings.devSettings valueForKey:@"timerPeriod"] doubleValue];
+	
 	if (!_timer)
-		_timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+		_timer = [NSTimer scheduledTimerWithTimeInterval:frequency target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
 }
 
 @end

@@ -21,6 +21,8 @@
 		ED5FC1DC174FE22800316344 /* VWTSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5FC1DB174FE22800316344 /* VWTSounds.m */; };
 		ED5FC1E01750568A00316344 /* VWTAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5FC1DE1750568A00316344 /* VWTAppController.m */; };
 		ED91240F176D066D002CC59D /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED91240E176D066D002CC59D /* Preferences.xib */; };
+		ED9A906A176EF031000BFBEF /* dev-options.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9A9069176EF031000BFBEF /* dev-options.plist */; };
+		ED9A906D176EF14F000BFBEF /* VWTdevSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9A906C176EF14F000BFBEF /* VWTdevSettingsController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,9 @@
 		ED5FC1DD1750568A00316344 /* VWTAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWTAppController.h; sourceTree = "<group>"; };
 		ED5FC1DE1750568A00316344 /* VWTAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTAppController.m; sourceTree = "<group>"; };
 		ED91240E176D066D002CC59D /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Preferences.xib; path = Timer/Preferences.xib; sourceTree = "<group>"; };
+		ED9A9069176EF031000BFBEF /* dev-options.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dev-options.plist"; sourceTree = "<group>"; };
+		ED9A906B176EF14F000BFBEF /* VWTdevSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWTdevSettingsController.h; sourceTree = "<group>"; };
+		ED9A906C176EF14F000BFBEF /* VWTdevSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTdevSettingsController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +149,9 @@
 		ED48DFC4174E8D0200BA095A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ED9A9069176EF031000BFBEF /* dev-options.plist */,
+				ED9A906B176EF14F000BFBEF /* VWTdevSettingsController.h */,
+				ED9A906C176EF14F000BFBEF /* VWTdevSettingsController.m */,
 				ED0469C8176CD0620092F445 /* LICENSE.md */,
 				ED0469C9176CD0620092F445 /* README.md */,
 				ED48DFC5174E8D0200BA095A /* Timer-Info.plist */,
@@ -233,6 +241,7 @@
 				ED0469CA176CD0620092F445 /* LICENSE.md in Resources */,
 				ED0469CB176CD0620092F445 /* README.md in Resources */,
 				ED91240F176D066D002CC59D /* Preferences.xib in Resources */,
+				ED9A906A176EF031000BFBEF /* dev-options.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +258,7 @@
 				ED5FC1DC174FE22800316344 /* VWTSounds.m in Sources */,
 				ED5FC1E01750568A00316344 /* VWTAppController.m in Sources */,
 				ED152841176D63E6003E603B /* VWTPrefController.m in Sources */,
+				ED9A906D176EF14F000BFBEF /* VWTdevSettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

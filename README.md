@@ -11,6 +11,14 @@ If you're interested in downloading a prebuilt binary to play with, you can find
 
 ##Release Notes
 
+###V0.7.1
+2013-06-17
+
+####Features Added
+- Added option to speak alert.
+- Added a plist file to tweak options while developing. Thanks to Brent Simmons for that idea. 
+
+
 ###V0.7
 June 16, 2013
 
