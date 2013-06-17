@@ -27,13 +27,15 @@
 {
 	if ([self.defaults objectForKey:@"customMessage"]){
 		self.customMessage = [self.defaults objectForKey:@"customMessage"];
-		self.checkbox = [self.defaults boolForKey:@"sendNotification"];
+		self.sendAlertMessage = [self.defaults boolForKey:@"sendNotification"];
+		self.speakMessage = [self.defaults boolForKey:@"speakNotification"];
 	}
 }
 
 - (IBAction)saveAndClose:(id)sender
 {
-	[self.defaults setBool:self.checkbox forKey:@"sendNotification"];
+	[self.defaults setBool:self.sendAlertMessage forKey:@"sendNotification"];
+	[self.defaults setBool:self.speakMessage forKey:@"speakNotification"];
 	[self.defaults setObject:self.customMessage forKey:@"customMessage"];
 	[self.defaults synchronize];
 	
