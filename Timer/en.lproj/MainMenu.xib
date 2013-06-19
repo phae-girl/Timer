@@ -328,8 +328,8 @@
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">1:00</string>
-								<object class="NSFont" key="NSSupport" id="253257987">
-									<string key="NSName">HelveticaNeue</string>
+								<object class="NSFont" key="NSSupport" id="88766755">
+									<string key="NSName">HelveticaNeue-Light</string>
 									<double key="NSSize">20</double>
 									<int key="NSfFlags">16</int>
 								</object>
@@ -357,7 +357,7 @@
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">10:00</string>
-								<reference key="NSSupport" ref="253257987"/>
+								<reference key="NSSupport" ref="88766755"/>
 								<string key="NSCellIdentifier">_NS:22</string>
 								<reference key="NSControlView" ref="928011467"/>
 								<int key="NSButtonFlags">-2033434624</int>
@@ -382,7 +382,7 @@
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">15:00</string>
-								<reference key="NSSupport" ref="253257987"/>
+								<reference key="NSSupport" ref="88766755"/>
 								<string key="NSCellIdentifier">_NS:22</string>
 								<reference key="NSControlView" ref="731880713"/>
 								<int key="NSButtonFlags">-2033434624</int>
@@ -407,7 +407,7 @@
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">30:00</string>
-								<reference key="NSSupport" ref="253257987"/>
+								<reference key="NSSupport" ref="88766755"/>
 								<string key="NSCellIdentifier">_NS:22</string>
 								<reference key="NSControlView" ref="723145397"/>
 								<int key="NSButtonFlags">-2033434624</int>
@@ -432,7 +432,7 @@
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">45:00</string>
-								<reference key="NSSupport" ref="253257987"/>
+								<reference key="NSSupport" ref="88766755"/>
 								<string key="NSCellIdentifier">_NS:22</string>
 								<reference key="NSControlView" ref="403597948"/>
 								<int key="NSButtonFlags">-2033434624</int>
@@ -457,7 +457,7 @@
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">60:00</string>
-								<reference key="NSSupport" ref="253257987"/>
+								<reference key="NSSupport" ref="88766755"/>
 								<string key="NSCellIdentifier">_NS:22</string>
 								<reference key="NSControlView" ref="191260989"/>
 								<int key="NSButtonFlags">-2033434624</int>
@@ -482,8 +482,8 @@
 								<int key="NSCellFlags">68157504</int>
 								<int key="NSCellFlags2">272630784</int>
 								<string key="NSContents">Play Sound</string>
-								<object class="NSFont" key="NSSupport" id="217863070">
-									<string key="NSName">HelveticaNeue</string>
+								<object class="NSFont" key="NSSupport" id="449036907">
+									<string key="NSName">HelveticaNeue-Light</string>
 									<double key="NSSize">14</double>
 									<int key="NSfFlags">16</int>
 								</object>
@@ -523,7 +523,7 @@
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">268435456</int>
 								<string key="NSContents">Repeat</string>
-								<reference key="NSSupport" ref="217863070"/>
+								<reference key="NSSupport" ref="449036907"/>
 								<string key="NSCellIdentifier">_NS:9</string>
 								<reference key="NSControlView" ref="490358763"/>
 								<int key="NSButtonFlags">1210863872</int>
@@ -556,7 +556,7 @@
 								<int key="NSCellFlags2">138413056</int>
 								<string key="NSContents">00:00</string>
 								<object class="NSFont" key="NSSupport">
-									<string key="NSName">HelveticaNeue-Bold</string>
+									<string key="NSName">HelveticaNeue-Light</string>
 									<double key="NSSize">120</double>
 									<int key="NSfFlags">16</int>
 								</object>
@@ -573,14 +573,13 @@
 							<string key="NSFrame">{{20, 19}, {340, 62}}</string>
 							<reference key="NSSuperview" ref="435768075"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="3671886">
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">Cancel</string>
-								<reference key="NSSupport" ref="253257987"/>
+								<reference key="NSSupport" ref="88766755"/>
 								<string key="NSCellIdentifier">_NS:22</string>
 								<reference key="NSControlView" ref="134270551"/>
 								<int key="NSButtonFlags">-2033434624</int>
@@ -605,7 +604,7 @@
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">Pause</string>
-								<reference key="NSSupport" ref="253257987"/>
+								<reference key="NSSupport" ref="88766755"/>
 								<string key="NSCellIdentifier">_NS:22</string>
 								<reference key="NSControlView" ref="371257685"/>
 								<int key="NSButtonFlags">-2033434624</int>
@@ -630,7 +629,7 @@
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
 								<string key="NSContents">Resume</string>
-								<reference key="NSSupport" ref="253257987"/>
+								<reference key="NSSupport" ref="88766755"/>
 								<string key="NSCellIdentifier">_NS:22</string>
 								<reference key="NSControlView" ref="83658169"/>
 								<int key="NSButtonFlags">-2033434624</int>
@@ -2558,7 +2557,6 @@
 					<string key="superclassName">NSObject</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="cancelTimer:">id</string>
-						<string key="closeSheet:">id</string>
 						<string key="pauseTimer:">id</string>
 						<string key="resumeTimer:">id</string>
 						<string key="showPreferences:">id</string>
@@ -2568,10 +2566,6 @@
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="cancelTimer:">
 							<string key="name">cancelTimer:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="closeSheet:">
-							<string key="name">closeSheet:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="pauseTimer:">
