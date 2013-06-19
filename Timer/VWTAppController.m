@@ -10,6 +10,7 @@
 #import "VWTSounds.h"
 #import "VWTTimer.h"
 #import "VWTPrefController.h"
+#import "NSColor+HexColor.h"
 
 @interface VWTAppController () <VWTTimerDelegateProtocol, NSWindowDelegate, NSUserNotificationCenterDelegate>
 @property (nonatomic) VWTTimer *timer;
