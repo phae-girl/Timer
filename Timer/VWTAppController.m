@@ -26,15 +26,30 @@ typedef enum : NSUInteger {
 	Cancel = (0x1 << 2)  // => 0x00000100
 } ControlButtonStatus;
 
+#pragma mark -
+#pragma mark Initial Setup
 
 -(void)awakeFromNib {
 	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
-	NSArray *array = [VWTSounds getSounds];
-	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
-	[self.soundSelector addItemsWithTitles:array];
-	NSString *lastSound = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastSoundSelected"];
-	[self.soundSelector selectItemWithTitle:lastSound];
+	[self setUpSounds];
+	[self setUpColors];
 }
+
+-(void)setUpSounds
+{
+	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
+	[self.soundSelector addItemsWithTitles:[VWTSounds getSounds]];
+	
+	[self.soundSelector selectItemWithTitle:[[NSUserDefaults standardUserDefaults] objectForKey:@"lastSoundSelected"]];
+}
+
+-(void)setUpColors
+{
+	[self.window setBackgroundColor:[NSColor colorWithHexValue:@"ffffff" alpha:1.0]];
+}
+
+#pragma mark -
+#pragma mark Controls and Buttons
 
 - (IBAction)testSound:(id)sender {
 	[[NSSound soundNamed:self.soundSelector.titleOfSelectedItem]play];
@@ -122,7 +137,8 @@ typedef enum : NSUInteger {
 {
 	if (!_preferencesSheet)
 		[NSBundle loadNibNamed:@"Preferences" owner:self];
-	[NSApp beginSheet:self.preferencesSheet modalForWindow:[[NSApp delegate]window] modalDelegate:self didEndSelector:NULL contextInfo:NULL];
+	[NSApp beginSheet:self.preferencesSheet modalForWindow:self.window modalDelegate:self didEndSelector:NULL contextInfo:NULL];
+	[self.preferencesSheet setBackgroundColor:[NSColor colorWithHexValue:@"ffffff" alpha:0.9]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePrefsSheet) name:@"prefsSheetShouldClose" object:nil];
 }
 
