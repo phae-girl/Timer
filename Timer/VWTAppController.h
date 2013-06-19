@@ -10,7 +10,6 @@
 
 @interface VWTAppController : NSObject
 
-@property (nonatomic, assign) IBOutlet NSWindow *window;
 @property (nonatomic, assign) IBOutlet NSWindow *preferencesSheet;
 
 @property (nonatomic, weak) IBOutlet NSPopUpButton *soundSelector;

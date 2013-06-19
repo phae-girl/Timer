@@ -33,8 +33,6 @@ typedef enum : NSUInteger {
 	[self.soundSelector addItemsWithTitles:array];
 	NSString *lastSound = [[NSUserDefaults standardUserDefaults] objectForKey:@"lastSoundSelected"];
 	[self.soundSelector selectItemWithTitle:lastSound];
-	[self.window setBackgroundColor:[NSColor whiteColor]];
-	[self.timeDisplay setTextColor:[NSColor colorWithCalibratedRed:1.0000  green:0.4314  blue:0.7804 alpha:1.0]];
 }
 
 - (IBAction)testSound:(id)sender {
