@@ -7,6 +7,7 @@
 //
 
 #import "VWTPrefController.h"
+#import "VWTSounds.h"
 
 @interface VWTPrefController ()
 @property (nonatomic) NSUserDefaults *defaults;
@@ -29,13 +30,29 @@
 		self.customMessage = [self.defaults objectForKey:@"customMessage"];
 		self.sendAlertMessage = [self.defaults boolForKey:@"sendNotification"];
 		self.speakMessage = [self.defaults boolForKey:@"speakNotification"];
+		self.repeatTimer = [self.defaults boolForKey:@"repeatTimer"];
 	}
+	[self populateSoundSelectionButton];
+}
+
+- (void)populateSoundSelectionButton
+{
+	[self.soundSelectionButton addItemsWithTitles:[VWTSounds getSounds]];
+	[self.soundSelectionButton insertItemWithTitle:@"" atIndex:0];
+	[self.soundSelectionButton selectItemWithTitle:[self.defaults objectForKey:@"selectedSound"]];
+	
+}
+
+- (IBAction)selectAlertSound:(id)sender {
+	[[NSSound soundNamed:self.soundSelectionButton.titleOfSelectedItem]play];
 }
 
 - (IBAction)saveAndClose:(id)sender
 {
+	[self.defaults setObject:self.soundSelectionButton.titleOfSelectedItem forKey:@"selectedSound"];
 	[self.defaults setBool:self.sendAlertMessage forKey:@"sendNotification"];
 	[self.defaults setBool:self.speakMessage forKey:@"speakNotification"];
+	[self.defaults setBool:self.repeatTimer forKey:@"repeatTimer"];
 	[self.defaults setObject:self.customMessage forKey:@"customMessage"];
 	[self.defaults synchronize];
 	

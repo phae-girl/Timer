@@ -7,14 +7,12 @@
 //
 
 #import "VWTAppController.h"
-#import "VWTSounds.h"
 #import "VWTTimer.h"
-#import "VWTPrefController.h"
 #import "NSColor+HexColor.h"
 
-@interface VWTAppController () <VWTTimerDelegateProtocol, NSWindowDelegate, NSUserNotificationCenterDelegate>
+@interface VWTAppController () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate>
 @property (nonatomic) VWTTimer *timer;
-@property (nonatomic) VWTPrefController *prefsController;
+
 
 @end
 
@@ -31,16 +29,7 @@ typedef enum : NSUInteger {
 
 -(void)awakeFromNib {
 	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
-	[self setUpSounds];
 	[self setUpColors];
-}
-
--(void)setUpSounds
-{
-	[self.soundSelector insertItemWithTitle:@"" atIndex:0];
-	[self.soundSelector addItemsWithTitles:[VWTSounds getSounds]];
-	
-	[self.soundSelector selectItemWithTitle:[[NSUserDefaults standardUserDefaults] objectForKey:@"lastSoundSelected"]];
 }
 
 -(void)setUpColors
@@ -50,12 +39,6 @@ typedef enum : NSUInteger {
 
 #pragma mark -
 #pragma mark Controls and Buttons
-
-- (IBAction)testSound:(id)sender {
-	[[NSSound soundNamed:self.soundSelector.titleOfSelectedItem]play];
-	[[NSUserDefaults standardUserDefaults] setObject:self.soundSelector.titleOfSelectedItem forKey:@"lastSoundSelected"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
-}
 
 - (IBAction)startTimer:(id)sender {
 	if (!_timer) {
@@ -88,6 +71,12 @@ typedef enum : NSUInteger {
 	[self toggleControlButtons:status];
 }
 
+- (void)killTimer
+{
+	[self.timer stopTimer];
+	self.timer = nil;
+}
+
 - (void)toggleControlButtons:(ControlButtonStatus)status
 {
 	[self.pauseButton setEnabled:Pause & status];
@@ -102,35 +91,39 @@ typedef enum : NSUInteger {
 
 - (void)timerDidComplete
 {
-	if (!self.repeats.state) {
-		[self killTimer];
-	}
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setBool:self.repeats.state forKey:@"repeats"];
-	[defaults synchronize];
-	
+	BOOL repeatTimer = [defaults boolForKey:@"repeatTimer"];
 	BOOL sendNotification = [defaults boolForKey:@"sendNotification"];
 	BOOL speakNotification = [defaults boolForKey:@"speakNotification"];
-	if (speakNotification) {
-		NSSpeechSynthesizer *synthesizer = [[NSSpeechSynthesizer alloc]initWithVoice:nil];
-		[synthesizer startSpeakingString:[defaults objectForKey:@"customMessage"]];
-	}
+	NSString *selectedSound = [defaults objectForKey:@"selectedSound"];
+	NSString *message = [defaults objectForKey:@"customMessage"];
 	
-	if (sendNotification) {
-		NSUserNotification *notification = [[NSUserNotification alloc] init];
-		notification.title = @"Timer Complete!";
-		notification.informativeText = [defaults objectForKey:@"customMessage"];
-		notification.soundName = self.soundSelector.titleOfSelectedItem;
-		[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-	}
-	else if (self.soundSelector.titleOfSelectedItem)
-		[[NSSound soundNamed:self.soundSelector.titleOfSelectedItem]play];
+	if (!repeatTimer)
+		[self killTimer];
+	
+	if (sendNotification)
+		[self showNotificationWithMessage:message andSound:selectedSound];
+	else if (selectedSound)
+		[[NSSound soundNamed:selectedSound]play];
+	
+	if (speakNotification)
+		[self speakNotification:message];
 }
 
-- (void)killTimer
+- (void)speakNotification:(NSString*)message
 {
-	[self.timer stopTimer];
-	self.timer = nil;
+	NSSpeechSynthesizer *synthesizer = [[NSSpeechSynthesizer alloc]initWithVoice:nil];
+	[synthesizer startSpeakingString:message];
+}
+
+- (void)showNotificationWithMessage:(NSString *)message andSound:(NSString *)sound
+{
+	NSUserNotification *notification = [[NSUserNotification alloc] init];
+	notification.title = @"Timer Complete!";
+	notification.informativeText = message;
+	notification.soundName = sound;
+	[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
+
 }
 
 - (IBAction)showPreferences:(id)sender

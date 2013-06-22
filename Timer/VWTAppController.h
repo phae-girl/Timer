@@ -20,7 +20,7 @@
 @property (nonatomic, weak) IBOutlet NSButton *cancelButton;
 @property (nonatomic, weak) IBOutlet NSButton *repeats;
 
-- (IBAction)testSound:(id)sender;
+
 - (IBAction)startTimer:(id)sender;
 
 - (IBAction)pauseTimer:(id)sender;
