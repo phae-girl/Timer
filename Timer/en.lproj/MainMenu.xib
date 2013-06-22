@@ -325,7 +325,7 @@
 							<object class="NSButtonCell" key="NSCell" id="177889212">
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">0:30</string>
+								<string key="NSContents">5:00</string>
 								<object class="NSFont" key="NSSupport" id="527531936">
 									<string key="NSName">HelveticaNeue-Light</string>
 									<double key="NSSize">20</double>
@@ -354,7 +354,7 @@
 							<object class="NSButtonCell" key="NSCell" id="469135925">
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">1:00</string>
+								<string key="NSContents">10:00</string>
 								<reference key="NSSupport" ref="527531936"/>
 								<string key="NSCellIdentifier">_NS:22</string>
 								<reference key="NSControlView" ref="928011467"/>
@@ -379,7 +379,7 @@
 							<object class="NSButtonCell" key="NSCell" id="323405568">
 								<int key="NSCellFlags">-2080374784</int>
 								<int key="NSCellFlags2">134217728</int>
-								<string key="NSContents">15:00</string>
+								<string key="NSContents">20:00</string>
 								<reference key="NSSupport" ref="527531936"/>
 								<string key="NSCellIdentifier">_NS:22</string>
 								<reference key="NSControlView" ref="731880713"/>
@@ -482,7 +482,7 @@
 								<string key="NSContents">00:00</string>
 								<object class="NSFont" key="NSSupport">
 									<string key="NSName">HelveticaNeue-Light</string>
-									<double key="NSSize">120</double>
+									<double key="NSSize">100</double>
 									<int key="NSfFlags">16</int>
 								</object>
 								<string key="NSCellIdentifier">_NS:1535</string>
