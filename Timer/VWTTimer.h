@@ -10,16 +10,15 @@
 
 @protocol VWTTimerDelegateProtocol <NSObject>
 @required
-- (void)timerDidFire:(NSString *)timeRemaining;
+- (void)updateRemainingTimeDisplay:(NSString *)timeRemaining;
 - (void)timerDidComplete;
 
 @end
 
 @interface VWTTimer : NSObject
-@property (nonatomic) BOOL repeats;
 @property (weak, nonatomic) NSObject <VWTTimerDelegateProtocol> *delegate;
 
-- (id)initWithDuration:(NSInteger)minutes;
+- (id)initTimerWithDuration:(NSArray *)duration;
 
 - (void)stopTimer;
 - (void)startTimer;
