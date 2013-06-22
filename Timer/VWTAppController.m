@@ -41,13 +41,22 @@ typedef enum : NSUInteger {
 #pragma mark Controls and Buttons
 
 - (IBAction)startTimer:(id)sender {
-	if (!_timer) {
-		_timer = [[VWTTimer alloc]initWithDuration:[[sender title] integerValue]];
-		[self.timer setDelegate:self];
-		
-		ControlButtonStatus status = (Pause | Cancel);
-		[self toggleControlButtons:status];
+	
+	
+	NSMutableArray *hoursMinutesSeconds = [[[sender title] componentsSeparatedByString:@":"] mutableCopy];
+	
+	while ([hoursMinutesSeconds count] < 3) {
+		[hoursMinutesSeconds insertObject:@"0" atIndex:0];
 	}
+	
+	if (!_timer) {
+		_timer = [[VWTTimer alloc]initTimerWithDuration:hoursMinutesSeconds];
+		[self.timer setDelegate:self];
+	}
+	
+	ControlButtonStatus status = (Pause | Cancel);
+	[self toggleControlButtons:status];
+	
 }
 
 -(IBAction)pauseTimer:(id)sender
@@ -84,9 +93,10 @@ typedef enum : NSUInteger {
 	[self.cancelButton setEnabled:Cancel & status];
 }
 
-- (void)timerDidFire:(NSString *)timeRemaining
+- (void)updateRemainingTimeDisplay:(NSString *)timeRemaining
 {
 	[self.timeDisplay setStringValue:timeRemaining];
+	NSLog(@"%lu",[timeRemaining length]);
 }
 
 - (void)timerDidComplete
@@ -103,6 +113,7 @@ typedef enum : NSUInteger {
 	
 	if (sendNotification)
 		[self showNotificationWithMessage:message andSound:selectedSound];
+	
 	else if (selectedSound)
 		[[NSSound soundNamed:selectedSound]play];
 	
