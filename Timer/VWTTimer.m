@@ -18,20 +18,23 @@
 
 @implementation VWTTimer
 
--(id)initTimerWithDuration:(NSArray *)duration
+-(id)initTimerWithDuration:(NSString *)duration
 {
 	self = [super init];
 	if (self) {
-		[self resetTimeRemaining:duration];
-		[self startTimer];
+		[self setInitialTimerDuration:duration];
 	}
 	return self;
 }
 
-- (void)resetTimeRemaining:(NSArray *)duration
+- (void)setInitialTimerDuration:(NSString *)duration
 {
 	if (duration) {
-		_durationInSeconds = [duration[2] integerValue]+ ([duration[1] integerValue] *60) + ([duration[0] integerValue] *3600);
+		NSMutableArray *hoursMinutesSeconds = [[duration componentsSeparatedByString:@":"]mutableCopy];
+		while ([hoursMinutesSeconds count] < 3) {
+			[hoursMinutesSeconds insertObject:@"0" atIndex:0];
+		}
+		_durationInSeconds = [hoursMinutesSeconds[2] integerValue]+ ([hoursMinutesSeconds[1] integerValue] *60) + ([hoursMinutesSeconds[0] integerValue] *3600);
 		_totalSecondsRemaining = self.durationInSeconds;
 	}
 	else
@@ -57,7 +60,7 @@
 	else
     {
         [self.delegate timerDidComplete];
-		[self resetTimeRemaining:nil];
+		[self setInitialTimerDuration:nil];
     }
 }
 

@@ -18,7 +18,7 @@
 @interface VWTTimer : NSObject
 @property (weak, nonatomic) NSObject <VWTTimerDelegateProtocol> *delegate;
 
-- (id)initTimerWithDuration:(NSArray *)duration;
+- (id)initTimerWithDuration:(NSString *)duration;
 
 - (void)stopTimer;
 - (void)startTimer;

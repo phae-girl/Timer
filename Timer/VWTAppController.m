@@ -42,21 +42,19 @@ typedef enum : NSUInteger {
 
 - (IBAction)startTimer:(id)sender {
 	
-	
-	NSMutableArray *hoursMinutesSeconds = [[[sender title] componentsSeparatedByString:@":"] mutableCopy];
-	
-	while ([hoursMinutesSeconds count] < 3) {
-		[hoursMinutesSeconds insertObject:@"0" atIndex:0];
+	if (!_timer) {
+		_timer = [[VWTTimer alloc]initTimerWithDuration:[sender title]];
+		[self.timer setDelegate:self];
+		[self.timer startTimer];
 	}
 	
-	if (!_timer) {
-		_timer = [[VWTTimer alloc]initTimerWithDuration:hoursMinutesSeconds];
-		[self.timer setDelegate:self];
+	else {
+		[self killTimer];
+		[self startTimer:sender];
 	}
 	
 	ControlButtonStatus status = (Pause | Cancel);
 	[self toggleControlButtons:status];
-	
 }
 
 -(IBAction)pauseTimer:(id)sender
@@ -96,7 +94,6 @@ typedef enum : NSUInteger {
 - (void)updateRemainingTimeDisplay:(NSString *)timeRemaining
 {
 	[self.timeDisplay setStringValue:timeRemaining];
-	NSLog(@"%lu",[timeRemaining length]);
 }
 
 - (void)timerDidComplete
@@ -137,6 +134,10 @@ typedef enum : NSUInteger {
 
 }
 
+#pragma mark -
+#pragma mark Preference Sheet Methods
+
+
 - (IBAction)showPreferences:(id)sender
 {
 	if (!_preferencesSheet)
@@ -153,6 +154,9 @@ typedef enum : NSUInteger {
 	[self.preferencesSheet close];
 	self.preferencesSheet = nil;
 }
+
+#pragma mark -
+#pragma mark NSUserNotificationCenter Delegate Method
 
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
     return YES;
