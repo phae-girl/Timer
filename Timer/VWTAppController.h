@@ -10,6 +10,7 @@
 
 @interface VWTAppController : NSObject
 
+@property (nonatomic, assign) IBOutlet NSWindow *window;
 @property (nonatomic, assign) IBOutlet NSWindow *preferencesSheet;
 
 @property (nonatomic, weak) IBOutlet NSPopUpButton *soundSelector;
@@ -19,7 +20,7 @@
 @property (nonatomic, weak) IBOutlet NSButton *cancelButton;
 @property (nonatomic, weak) IBOutlet NSButton *repeats;
 
-- (IBAction)testSound:(id)sender;
+
 - (IBAction)startTimer:(id)sender;
 
 - (IBAction)pauseTimer:(id)sender;

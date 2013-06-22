@@ -11,6 +11,12 @@ If you're interested in downloading a prebuilt binary to play with, you can find
 
 ##Release Notes
 
+###V0.7.3
+2013-06-22
+- Moved controls to select sound and repeat timer to preferences sheet.
+- Changed timer countdown logic to something more reasonable.
+- Changed timer class to accept arbitrary hours, minutes and seconds. 
+
 ###V0.7.1
 2013-06-17
 

@@ -10,9 +10,13 @@
 
 @interface VWTPrefController : NSObject
 
-@property (assign, nonatomic) NSInteger sendAlertMessage, speakMessage;
+@property (assign, nonatomic) NSInteger sendAlertMessage, speakMessage, repeatTimer;
 @property (copy, nonatomic) NSString *customMessage;
 
+
+@property (assign, nonatomic) IBOutlet NSPopUpButton *soundSelectionButton;
+
+- (IBAction)selectAlertSound:(id)sender;
 - (IBAction)saveAndClose:(id)sender;
 
 
