@@ -8,12 +8,11 @@
 
 #import "VWTAppController.h"
 #import "VWTTimer.h"
-#import "VWTPrefController.h"
 #import "NSColor+HexColor.h"
 
-@interface VWTAppController () <VWTTimerDelegateProtocol, NSWindowDelegate, NSUserNotificationCenterDelegate>
+@interface VWTAppController () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate>
 @property (nonatomic) VWTTimer *timer;
-@property (nonatomic) VWTPrefController *prefsController;
+
 
 @end
 
@@ -40,7 +39,6 @@ typedef enum : NSUInteger {
 
 #pragma mark -
 #pragma mark Controls and Buttons
-
 
 - (IBAction)startTimer:(id)sender {
 	if (!_timer) {
@@ -103,13 +101,13 @@ typedef enum : NSUInteger {
 	if (!repeatTimer)
 		[self killTimer];
 	
-	if (speakNotification)
-		[self speakNotification:message];
-	
 	if (sendNotification)
 		[self showNotificationWithMessage:message andSound:selectedSound];
 	else if (selectedSound)
 		[[NSSound soundNamed:selectedSound]play];
+	
+	if (speakNotification)
+		[self speakNotification:message];
 }
 
 - (void)speakNotification:(NSString*)message
