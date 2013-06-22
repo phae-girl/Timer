@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Phaedra Deepsky. All rights reserved.
 //
 
-#import "VWTSounds.h"
+#import "SoundFileController.h"
 
-@interface VWTSounds ()
+@interface SoundFileController ()
 @property (copy, readwrite)NSMutableArray *sounds;
 
 @end
 
-@implementation VWTSounds
+@implementation SoundFileController
 
 - (id)init
 {

@@ -7,7 +7,7 @@
 //
 
 #import "VWTPrefController.h"
-#import "VWTSounds.h"
+#import "SoundFileController.h"
 
 @interface VWTPrefController ()
 @property (nonatomic) NSUserDefaults *defaults;
@@ -37,7 +37,7 @@
 
 - (void)populateSoundSelectionButton
 {
-	[self.soundSelectionButton addItemsWithTitles:[VWTSounds getSounds]];
+	[self.soundSelectionButton addItemsWithTitles:[SoundFileController getSounds]];
 	[self.soundSelectionButton insertItemWithTitle:@"" atIndex:0];
 	[self.soundSelectionButton selectItemWithTitle:[self.defaults objectForKey:@"selectedSound"]];
 	
