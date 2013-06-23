@@ -9,7 +9,7 @@
 #import "VWTPrefController.h"
 #import "SoundFileController.h"
 
-@interface VWTPrefController ()
+@interface VWTPrefController () <NSPopoverDelegate>
 @property (nonatomic) NSUserDefaults *defaults;
 @end
 
@@ -47,6 +47,34 @@
 	[[NSSound soundNamed:self.soundSelectionButton.titleOfSelectedItem]play];
 }
 
+// 1 - Open the Popover
+// 2 - Get the tag for the sending button
+// 3 - Get the updated text string
+// 4 - Store the string and tag in a key-value pair
+// 5 - Save that to user defaults
+// 6 - Close the fucking popover
+
+
+- (IBAction)changeDurationForButton:(id)sender
+{
+	NSLog(@"%ld",[sender tag]);
+	[_popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
+	[self.popoverLabel setStringValue:[NSString stringWithFormat:@"%ld", [sender tag]]];
+}
+
+- (IBAction)okButton:(id)sender
+{
+	NSLog(@"%@",[self.time stringValue]);
+	//TODO: Validate Time Input
+	//TODO: Assign Input to Dictionary
+	//TODO: Update button text to new time
+	
+	[self.popover close];
+}
+-(void)popoverDidShow:(NSNotification *)notification
+{
+	
+}
 - (IBAction)saveAndClose:(id)sender
 {
 	[self.defaults setObject:self.soundSelectionButton.titleOfSelectedItem forKey:@"selectedSound"];
