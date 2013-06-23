@@ -21,7 +21,7 @@
 @property (weak) IBOutlet NSView *view;
 
 
-@property (assign, nonatomic) IBOutlet NSTextField *popoverLabel, *time;
+@property (assign, nonatomic) IBOutlet NSTextField *customDurationEditBox;
 @property (assign, nonatomic) NSInteger sendAlertMessage, speakMessage, repeatTimer;
 @property (copy, nonatomic) NSString *customMessage;
 

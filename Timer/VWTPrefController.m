@@ -9,7 +9,7 @@
 #import "VWTPrefController.h"
 #import "SoundFileController.h"
 
-@interface VWTPrefController () <NSPopoverDelegate>
+@interface VWTPrefController () 
 @property (nonatomic) NSUserDefaults *defaults;
 @property (assign, nonatomic) NSInteger senderTag;
 @property (copy, nonatomic) NSArray *customTimerButtons;
@@ -71,42 +71,27 @@
 	[[NSSound soundNamed:self.soundSelectionButton.titleOfSelectedItem]play];
 }
 
-// 1 - Open the Popover
-// 2 - Get the tag for the sending button
-// 3 - Get the updated text string
-// 4 - Store the string and tag in a key-value pair
-// 5 - Save that to user defaults
-// 6 - Close the fucking popover
-
-
 - (IBAction)changeDurationForButton:(id)sender
 {
-
 	_senderTag = [sender tag];
 	[_popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
-	[self.popoverLabel setStringValue:[NSString stringWithFormat:@"%ld", self.senderTag]];
 }
 
 - (IBAction)okButton:(id)sender
 {
-	NSLog(@"%@",[self.time stringValue]);
+	NSLog(@"%@",[self.customDurationEditBox stringValue]);
 	NSLog(@"%ld",self.senderTag);
 	NSString *buttonTagKey = [NSString stringWithFormat:@"%ld", self.senderTag];
-	NSString *buttonTimeValue = [self.time stringValue];
+	NSString *buttonTimeValue = [self.customDurationEditBox stringValue];
 	[self.defaults setObject:buttonTimeValue forKey:buttonTagKey];
 	[self.defaults synchronize];
 	
 	
 	//TODO: Validate Time Input
-	//TODO: Assign Input to Dictionary
-	//TODO: Update button text to new time
-	
+	[self populateButtonTitles];
 	[self.popover close];
 }
--(void)popoverDidShow:(NSNotification *)notification
-{
-	
-}
+
 - (IBAction)saveAndClose:(id)sender
 {
 	[self.defaults setObject:self.soundSelectionButton.titleOfSelectedItem forKey:@"selectedSound"];

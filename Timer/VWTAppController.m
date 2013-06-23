@@ -73,7 +73,7 @@ typedef enum : NSUInteger {
 
 - (IBAction)cancelTimer:(id)sender {
 	[self killTimer];
-	self.timeDisplay.stringValue = @"0:00";
+	self.timeDisplay.stringValue = @"00:00";
 	ControlButtonStatus status = !(Pause | Resume | Cancel);
 	[self toggleControlButtons:status];
 }
