@@ -29,6 +29,8 @@
 - (IBAction)saveAndClose:(id)sender;
 - (IBAction)selectAlertSound:(id)sender;
 - (IBAction)okButton:(id)sender;
+- (IBAction)cancelButton:(id)sender;
+- (IBAction)textFieldEndEditing:(id)sender;
 
 
 @end

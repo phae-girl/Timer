@@ -92,6 +92,14 @@
 	[self.popover close];
 }
 
+- (IBAction)cancelButton:(id)sender {
+	[self.popover close];
+}
+
+- (IBAction)textFieldEndEditing:(id)sender {
+	[self okButton:sender];
+}
+
 - (IBAction)saveAndClose:(id)sender
 {
 	[self.defaults setObject:self.soundSelectionButton.titleOfSelectedItem forKey:@"selectedSound"];
