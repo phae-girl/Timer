@@ -18,6 +18,7 @@
 @property (weak) IBOutlet NSButton *button4;
 @property (weak) IBOutlet NSButton *button5;
 @property (weak) IBOutlet NSButton *button6;
+@property (weak) IBOutlet NSView *view;
 
 
 @property (assign, nonatomic) IBOutlet NSTextField *popoverLabel, *time;

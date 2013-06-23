@@ -55,11 +55,14 @@
 	for (int i=0; i<[self.customTimerButtons count]; i++) {
 		NSString *tag = [NSString stringWithFormat:@"%d", i];
 		NSString *labelString = [self.defaults objectForKey:tag];
+		NSButton *button = self.customTimerButtons[i];
+							
 		if (labelString) 
-			[self.customTimerButtons[i] setTitle:labelString];
+			[button setTitle:labelString];
 		else
-			[self.customTimerButtons[i] setTitle:@"00:00"];
-		
+			[button setTitle:@"00:00"];
+		[button setFrameSize:NSMakeSize(84,48)];
+		[self.view setNeedsDisplay:YES];
 	}
 	
 }
