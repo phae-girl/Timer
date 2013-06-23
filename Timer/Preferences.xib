@@ -379,7 +379,6 @@
 											<reference key="NSSuperview" ref="133164724"/>
 											<reference key="NSNextKeyView" ref="901832080"/>
 											<string key="NSReuseIdentifierKey">_NS:22</string>
-											<int key="NSTag">1</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="456056713">
 												<int key="NSCellFlags">-2080374784</int>
@@ -404,7 +403,7 @@
 											<reference key="NSSuperview" ref="133164724"/>
 											<reference key="NSNextKeyView" ref="77934477"/>
 											<string key="NSReuseIdentifierKey">_NS:22</string>
-											<int key="NSTag">2</int>
+											<int key="NSTag">1</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="76185209">
 												<int key="NSCellFlags">-2080374784</int>
@@ -429,7 +428,7 @@
 											<reference key="NSSuperview" ref="133164724"/>
 											<reference key="NSNextKeyView" ref="833577361"/>
 											<string key="NSReuseIdentifierKey">_NS:22</string>
-											<int key="NSTag">3</int>
+											<int key="NSTag">2</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="57110633">
 												<int key="NSCellFlags">-2080374784</int>
@@ -454,7 +453,7 @@
 											<reference key="NSSuperview" ref="133164724"/>
 											<reference key="NSNextKeyView" ref="608991033"/>
 											<string key="NSReuseIdentifierKey">_NS:22</string>
-											<int key="NSTag">4</int>
+											<int key="NSTag">3</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="879798640">
 												<int key="NSCellFlags">-2080374784</int>
@@ -503,7 +502,7 @@
 											<reference key="NSSuperview" ref="133164724"/>
 											<reference key="NSNextKeyView" ref="700136671"/>
 											<string key="NSReuseIdentifierKey">_NS:22</string>
-											<int key="NSTag">6</int>
+											<int key="NSTag">5</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="857761892">
 												<int key="NSCellFlags">-2080374784</int>
@@ -528,7 +527,7 @@
 											<reference key="NSSuperview" ref="133164724"/>
 											<reference key="NSNextKeyView" ref="521006535"/>
 											<string key="NSReuseIdentifierKey">_NS:22</string>
-											<int key="NSTag">5</int>
+											<int key="NSTag">4</int>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="990730504">
 												<int key="NSCellFlags">-2080374784</int>
@@ -838,6 +837,54 @@
 						<reference key="destination" ref="537120038"/>
 					</object>
 					<int key="connectionID">314</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">button1</string>
+						<reference key="source" ref="977284328"/>
+						<reference key="destination" ref="681835055"/>
+					</object>
+					<int key="connectionID">315</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">button2</string>
+						<reference key="source" ref="977284328"/>
+						<reference key="destination" ref="901832080"/>
+					</object>
+					<int key="connectionID">316</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">button3</string>
+						<reference key="source" ref="977284328"/>
+						<reference key="destination" ref="77934477"/>
+					</object>
+					<int key="connectionID">317</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">button4</string>
+						<reference key="source" ref="977284328"/>
+						<reference key="destination" ref="833577361"/>
+					</object>
+					<int key="connectionID">318</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">button5</string>
+						<reference key="source" ref="977284328"/>
+						<reference key="destination" ref="608991033"/>
+					</object>
+					<int key="connectionID">319</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">button6</string>
+						<reference key="source" ref="977284328"/>
+						<reference key="destination" ref="521006535"/>
+					</object>
+					<int key="connectionID">320</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -2769,7 +2816,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">314</int>
+			<int key="maxID">320</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

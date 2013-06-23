@@ -11,6 +11,9 @@
 
 @interface VWTPrefController () <NSPopoverDelegate>
 @property (nonatomic) NSUserDefaults *defaults;
+@property (assign, nonatomic) NSInteger senderTag;
+@property (copy, nonatomic) NSArray *customTimerButtons;
+
 @end
 
 @implementation VWTPrefController
@@ -20,6 +23,7 @@
     self = [super init];
     if (self) {
         _defaults = [NSUserDefaults standardUserDefaults];
+		
     }
     return self;
 }
@@ -31,8 +35,11 @@
 		self.sendAlertMessage = [self.defaults boolForKey:@"sendNotification"];
 		self.speakMessage = [self.defaults boolForKey:@"speakNotification"];
 		self.repeatTimer = [self.defaults boolForKey:@"repeatTimer"];
+		
 	}
+	_customTimerButtons = @[self.button1,self.button2,self.button3,self.button4,self.button5,self.button6];
 	[self populateSoundSelectionButton];
+	[self populateButtonTitles];
 }
 
 - (void)populateSoundSelectionButton
@@ -40,6 +47,20 @@
 	[self.soundSelectionButton addItemsWithTitles:[SoundFileController getSounds]];
 	[self.soundSelectionButton insertItemWithTitle:@"" atIndex:0];
 	[self.soundSelectionButton selectItemWithTitle:[self.defaults objectForKey:@"selectedSound"]];
+	
+}
+
+- (void)populateButtonTitles
+{
+	for (int i=0; i<[self.customTimerButtons count]; i++) {
+		NSString *tag = [NSString stringWithFormat:@"%d", i];
+		NSString *labelString = [self.defaults objectForKey:tag];
+		if (labelString) 
+			[self.customTimerButtons[i] setTitle:labelString];
+		else
+			[self.customTimerButtons[i] setTitle:@"00:00"];
+		
+	}
 	
 }
 
@@ -57,14 +78,22 @@
 
 - (IBAction)changeDurationForButton:(id)sender
 {
-	NSLog(@"%ld",[sender tag]);
+
+	_senderTag = [sender tag];
 	[_popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
-	[self.popoverLabel setStringValue:[NSString stringWithFormat:@"%ld", [sender tag]]];
+	[self.popoverLabel setStringValue:[NSString stringWithFormat:@"%ld", self.senderTag]];
 }
 
 - (IBAction)okButton:(id)sender
 {
 	NSLog(@"%@",[self.time stringValue]);
+	NSLog(@"%ld",self.senderTag);
+	NSString *buttonTagKey = [NSString stringWithFormat:@"%ld", self.senderTag];
+	NSString *buttonTimeValue = [self.time stringValue];
+	[self.defaults setObject:buttonTimeValue forKey:buttonTagKey];
+	[self.defaults synchronize];
+	
+	
 	//TODO: Validate Time Input
 	//TODO: Assign Input to Dictionary
 	//TODO: Update button text to new time
