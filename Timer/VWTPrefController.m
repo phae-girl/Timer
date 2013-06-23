@@ -79,8 +79,6 @@
 
 - (IBAction)okButton:(id)sender
 {
-	NSLog(@"%@",[self.customDurationEditBox stringValue]);
-	NSLog(@"%ld",self.senderTag);
 	NSString *buttonTagKey = [NSString stringWithFormat:@"%ld", self.senderTag];
 	NSString *buttonTimeValue = [self.customDurationEditBox stringValue];
 	[self.defaults setObject:buttonTimeValue forKey:buttonTagKey];
