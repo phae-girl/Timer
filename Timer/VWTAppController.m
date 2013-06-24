@@ -27,16 +27,34 @@ typedef enum : NSUInteger {
 #pragma mark -
 #pragma mark Initial Setup
 
--(void)awakeFromNib {
+- (void)awakeFromNib
+{
 	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 	[self setUpColors];
+	[self setUpTimerButtonDurations];
 }
 
--(void)setUpColors
+- (void)setUpColors
 {
 	[self.window setBackgroundColor:[NSColor colorWithHexValue:@"ffffff" alpha:1.0]];
 }
-
+- (void)setUpTimerButtonDurations
+{
+	NSArray *timerButtons = @[self.timerButton0,self.timerButton1,self.timerButton2,self.timerButton3,self.timerButton4,self.timerButton5];
+	NSArray *defaultDurations = @[@"5:00",@"10:00",@"20:00",@"30:00",@"45:00",@"1:00:00"];
+	
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	for (int i =0; i<[timerButtons count]; i++) {
+		NSButton *button = timerButtons[i];
+		NSString *key = [NSString stringWithFormat:@"durationForTimerButton%d",i];
+		NSString *buttonTitle = [defaults objectForKey:key];
+		if (buttonTitle) 
+			[button setTitle:buttonTitle];
+		else
+			[button setTitle:defaultDurations[i]];
+	}
+}
 #pragma mark -
 #pragma mark Controls and Buttons
 
@@ -145,6 +163,7 @@ typedef enum : NSUInteger {
 	[NSApp beginSheet:self.preferencesSheet modalForWindow:self.window modalDelegate:self didEndSelector:NULL contextInfo:NULL];
 	[self.preferencesSheet setBackgroundColor:[NSColor colorWithHexValue:@"ffffff" alpha:0.9]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePrefsSheet) name:@"prefsSheetShouldClose" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpTimerButtonDurations) name:@"timerDurationsUpdated" object:nil];
 }
 
 - (void)closePrefsSheet

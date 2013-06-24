@@ -53,7 +53,7 @@
 - (void)populateButtonTitles
 {
 	for (int i=0; i<[self.customTimerButtons count]; i++) {
-		NSString *tag = [NSString stringWithFormat:@"%d", i];
+		NSString *tag = [NSString stringWithFormat:@"durationForTimerButton%d", i];
 		NSString *labelString = [self.defaults objectForKey:tag];
 		NSButton *button = self.customTimerButtons[i];
 							
@@ -79,7 +79,7 @@
 
 - (IBAction)okButton:(id)sender
 {
-	NSString *buttonTagKey = [NSString stringWithFormat:@"%ld", self.senderTag];
+	NSString *buttonTagKey = [NSString stringWithFormat:@"durationForTimerButton%ld", self.senderTag];
 	NSString *buttonTimeValue = [self.customDurationEditBox stringValue];
 	[self.defaults setObject:buttonTimeValue forKey:buttonTagKey];
 	[self.defaults synchronize];
@@ -87,6 +87,7 @@
 	
 	//TODO: Validate Time Input
 	[self populateButtonTitles];
+	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"timerDurationsUpdated" object:self]];
 	[self.popover close];
 }
 
