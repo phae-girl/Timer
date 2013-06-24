@@ -9,8 +9,11 @@
 #import "VWTPrefController.h"
 #import "SoundFileController.h"
 
-@interface VWTPrefController ()
+@interface VWTPrefController () 
 @property (nonatomic) NSUserDefaults *defaults;
+@property (assign, nonatomic) NSInteger senderTag;
+@property (copy, nonatomic) NSArray *customTimerButtons;
+
 @end
 
 @implementation VWTPrefController
@@ -20,6 +23,7 @@
     self = [super init];
     if (self) {
         _defaults = [NSUserDefaults standardUserDefaults];
+		
     }
     return self;
 }
@@ -31,8 +35,11 @@
 		self.sendAlertMessage = [self.defaults boolForKey:@"sendNotification"];
 		self.speakMessage = [self.defaults boolForKey:@"speakNotification"];
 		self.repeatTimer = [self.defaults boolForKey:@"repeatTimer"];
+		
 	}
+	_customTimerButtons = @[self.button1,self.button2,self.button3,self.button4,self.button5,self.button6];
 	[self populateSoundSelectionButton];
+	[self populateButtonTitles];
 }
 
 - (void)populateSoundSelectionButton
@@ -43,8 +50,53 @@
 	
 }
 
+- (void)populateButtonTitles
+{
+	for (int i=0; i<[self.customTimerButtons count]; i++) {
+		NSString *tag = [NSString stringWithFormat:@"durationForTimerButton%d", i];
+		NSString *labelString = [self.defaults objectForKey:tag];
+		NSButton *button = self.customTimerButtons[i];
+							
+		if (labelString) 
+			[button setTitle:labelString];
+		else
+			[button setTitle:@"00:00"];
+		[button setFrameSize:NSMakeSize(84,48)];
+		[self.view setNeedsDisplay:YES];
+	}
+	
+}
+
 - (IBAction)selectAlertSound:(id)sender {
 	[[NSSound soundNamed:self.soundSelectionButton.titleOfSelectedItem]play];
+}
+
+- (IBAction)changeDurationForButton:(id)sender
+{
+	_senderTag = [sender tag];
+	[_popover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMinXEdge];
+}
+
+- (IBAction)okButton:(id)sender
+{
+	NSString *buttonTagKey = [NSString stringWithFormat:@"durationForTimerButton%ld", self.senderTag];
+	NSString *buttonTimeValue = [self.customDurationEditBox stringValue];
+	[self.defaults setObject:buttonTimeValue forKey:buttonTagKey];
+	[self.defaults synchronize];
+	
+	
+	//TODO: Validate Time Input
+	[self populateButtonTitles];
+	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"timerDurationsUpdated" object:self]];
+	[self.popover close];
+}
+
+- (IBAction)cancelButton:(id)sender {
+	[self.popover close];
+}
+
+- (IBAction)textFieldEndEditing:(id)sender {
+	[self okButton:sender];
 }
 
 - (IBAction)saveAndClose:(id)sender

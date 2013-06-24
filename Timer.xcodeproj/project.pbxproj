@@ -45,6 +45,7 @@
 		ED48DFCF174E8D0200BA095A /* VWTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VWTAppDelegate.h; sourceTree = "<group>"; };
 		ED48DFD0174E8D0200BA095A /* VWTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VWTAppDelegate.m; sourceTree = "<group>"; };
 		ED48DFD3174E8D0300BA095A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		ED5579E11778BA7B00817BCA /* VWT.Timer.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = VWT.Timer.plist; path = ../../../../../../Library/Preferences/VWT.Timer.plist; sourceTree = "<group>"; };
 		ED5FC1D7174FDC4700316344 /* VWTTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWTTimer.h; sourceTree = "<group>"; };
 		ED5FC1D8174FDC4700316344 /* VWTTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTTimer.m; sourceTree = "<group>"; };
 		ED5FC1DA174FE22800316344 /* SoundFileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundFileController.h; sourceTree = "<group>"; };
@@ -153,6 +154,7 @@
 		ED48DFC4174E8D0200BA095A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				ED5579E11778BA7B00817BCA /* VWT.Timer.plist */,
 				ED9A9069176EF031000BFBEF /* dev-options.plist */,
 				ED9A906B176EF14F000BFBEF /* VWTdevSettingsController.h */,
 				ED9A906C176EF14F000BFBEF /* VWTdevSettingsController.m */,

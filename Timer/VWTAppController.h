@@ -18,6 +18,14 @@
 @property (nonatomic, weak) IBOutlet NSButton *resumeButton;
 @property (nonatomic, weak) IBOutlet NSButton *cancelButton;
 
+@property (weak) IBOutlet NSButton *timerButton0;
+@property (weak) IBOutlet NSButton *timerButton1;
+@property (weak) IBOutlet NSButton *timerButton2;
+@property (weak) IBOutlet NSButton *timerButton3;
+@property (weak) IBOutlet NSButton *timerButton4;
+@property (weak) IBOutlet NSButton *timerButton5;
+
+
 - (IBAction)startTimer:(id)sender;
 
 - (IBAction)pauseTimer:(id)sender;
