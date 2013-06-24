@@ -11,6 +11,10 @@ If you're interested in downloading a prebuilt binary to play with, you can find
 
 ##Release Notes
 
+###V0.7.4
+2013-06-24
+- Added the ability to set custom timer durations for each button in the preferences sheet.
+
 ###V0.7.3
 2013-06-22
 - Moved controls to select sound and repeat timer to preferences sheet.
