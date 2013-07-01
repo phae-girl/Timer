@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface VWTSounds : NSObject
+@interface SoundFileController : NSObject
 
 + (NSArray *)getSounds;
 

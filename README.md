@@ -7,9 +7,17 @@ Requires OS X 10.8 (Mountain Lion)
 
 ![Timer Screenshot](http://veganswithtypewriters.net/img/TimerApp.png)
 
-If you're interested in downloading a prebuilt binary to play with, you can find one [here][2]. Please be aware that it isn't code signed, but if you're here on GitHub, that shouldn't be an issue for you. If you have any questions or comments, please feel free to contact me here, or drop me an email at <phae@veganswithtypewriters.com>
+If you're interested in downloading a prebuilt binary to play with, you can find one [here][2]. <strike>Please be aware that it isn't code signed, but if you're here on GitHub, that shouldn't be an issue for you.</strike> If you have any questions or comments, please feel free to contact me here, or drop me an email at <phae@veganswithtypewriters.com>
 
 ##Release Notes
+
+###V0.7.5
+2013-07-01
+- Code signed app. Yay!
+
+###V0.7.4
+2013-06-24
+- Added the ability to set custom timer durations for each button in the preferences sheet.
 
 ###V0.7.3
 2013-06-22

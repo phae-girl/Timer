@@ -27,36 +27,52 @@ typedef enum : NSUInteger {
 #pragma mark -
 #pragma mark Initial Setup
 
--(void)awakeFromNib {
+- (void)awakeFromNib
+{
 	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 	[self setUpColors];
+	[self setUpTimerButtonDurations];
 }
 
--(void)setUpColors
+- (void)setUpColors
 {
-	[self.window setBackgroundColor:[NSColor colorWithHexValue:@"ffffff" alpha:1.0]];
+	[self.window setBackgroundColor:[NSColor colorWithHexValue:@"fefefe" alpha:1.0]];
 }
-
+- (void)setUpTimerButtonDurations
+{
+	NSArray *timerButtons = @[self.timerButton0,self.timerButton1,self.timerButton2,self.timerButton3,self.timerButton4,self.timerButton5];
+	NSArray *defaultDurations = @[@"5:00",@"10:00",@"20:00",@"30:00",@"45:00",@"1:00:00"];
+	
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	
+	for (int i =0; i<[timerButtons count]; i++) {
+		NSButton *button = timerButtons[i];
+		NSString *key = [NSString stringWithFormat:@"durationForTimerButton%d",i];
+		NSString *buttonTitle = [defaults objectForKey:key];
+		if (buttonTitle) 
+			[button setTitle:buttonTitle];
+		else
+			[button setTitle:defaultDurations[i]];
+	}
+}
 #pragma mark -
 #pragma mark Controls and Buttons
 
 - (IBAction)startTimer:(id)sender {
 	
-	
-	NSMutableArray *hoursMinutesSeconds = [[[sender title] componentsSeparatedByString:@":"] mutableCopy];
-	
-	while ([hoursMinutesSeconds count] < 3) {
-		[hoursMinutesSeconds insertObject:@"0" atIndex:0];
+	if (!_timer) {
+		_timer = [[VWTTimer alloc]initTimerWithDuration:[sender title]];
+		[self.timer setDelegate:self];
+		[self.timer startTimer];
 	}
 	
-	if (!_timer) {
-		_timer = [[VWTTimer alloc]initTimerWithDuration:hoursMinutesSeconds];
-		[self.timer setDelegate:self];
+	else {
+		[self killTimer];
+		[self startTimer:sender];
 	}
 	
 	ControlButtonStatus status = (Pause | Cancel);
 	[self toggleControlButtons:status];
-	
 }
 
 -(IBAction)pauseTimer:(id)sender
@@ -75,7 +91,7 @@ typedef enum : NSUInteger {
 
 - (IBAction)cancelTimer:(id)sender {
 	[self killTimer];
-	self.timeDisplay.stringValue = @"0:00";
+	self.timeDisplay.stringValue = @"00:00";
 	ControlButtonStatus status = !(Pause | Resume | Cancel);
 	[self toggleControlButtons:status];
 }
@@ -96,7 +112,6 @@ typedef enum : NSUInteger {
 - (void)updateRemainingTimeDisplay:(NSString *)timeRemaining
 {
 	[self.timeDisplay setStringValue:timeRemaining];
-	NSLog(@"%lu",[timeRemaining length]);
 }
 
 - (void)timerDidComplete
@@ -137,6 +152,10 @@ typedef enum : NSUInteger {
 
 }
 
+#pragma mark -
+#pragma mark Preference Sheet Methods
+
+
 - (IBAction)showPreferences:(id)sender
 {
 	if (!_preferencesSheet)
@@ -144,6 +163,7 @@ typedef enum : NSUInteger {
 	[NSApp beginSheet:self.preferencesSheet modalForWindow:self.window modalDelegate:self didEndSelector:NULL contextInfo:NULL];
 	[self.preferencesSheet setBackgroundColor:[NSColor colorWithHexValue:@"ffffff" alpha:0.9]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closePrefsSheet) name:@"prefsSheetShouldClose" object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setUpTimerButtonDurations) name:@"timerDurationsUpdated" object:nil];
 }
 
 - (void)closePrefsSheet
@@ -153,6 +173,9 @@ typedef enum : NSUInteger {
 	[self.preferencesSheet close];
 	self.preferencesSheet = nil;
 }
+
+#pragma mark -
+#pragma mark NSUserNotificationCenter Delegate Method
 
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
     return YES;
