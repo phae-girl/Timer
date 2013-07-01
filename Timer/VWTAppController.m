@@ -36,7 +36,7 @@ typedef enum : NSUInteger {
 
 - (void)setUpColors
 {
-	[self.window setBackgroundColor:[NSColor colorWithHexValue:@"ffffff" alpha:1.0]];
+	[self.window setBackgroundColor:[NSColor colorWithHexValue:@"fefefe" alpha:1.0]];
 }
 - (void)setUpTimerButtonDurations
 {
