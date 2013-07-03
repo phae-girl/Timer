@@ -49,7 +49,7 @@ typedef enum : NSUInteger {
 		NSButton *button = timerButtons[i];
 		NSString *key = [NSString stringWithFormat:@"durationForTimerButton%d",i];
 		NSString *buttonTitle = [defaults objectForKey:key];
-		if (buttonTitle) 
+		if (buttonTitle)
 			[button setTitle:buttonTitle];
 		else
 			[button setTitle:defaultDurations[i]];

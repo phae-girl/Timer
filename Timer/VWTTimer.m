@@ -11,14 +11,13 @@
 
 @interface VWTTimer ()
 @property (weak, nonatomic) NSTimer *timer;
-@property (copy, nonatomic) NSMutableArray *sounds;
 @property (nonatomic) NSInteger durationInSeconds, totalSecondsRemaining;
 
 @end
 
 @implementation VWTTimer
 
--(id)initTimerWithDuration:(NSString *)duration
+- (id)initTimerWithDuration:(NSString *)duration
 {
 	self = [super init];
 	if (self) {
@@ -54,7 +53,7 @@
 {
 	if (self.totalSecondsRemaining >= 0) {
 		[self.delegate updateRemainingTimeDisplay:[self timeRemaining]];
-		self.totalSecondsRemaining-=1;
+		self.totalSecondsRemaining--;
 	}
 	
 	else
@@ -72,7 +71,7 @@
 	NSInteger minutesRemaining = (totalSecondsLessHoursRemaining - totalSecondsLessHoursRemaining % 60)/60;
 	NSInteger secondsRemaining = (totalSecondsLessHoursRemaining % 60);
 	
-	if (hoursRemaining ==0 && minutesRemaining ==0)
+	if (hoursRemaining == 0 && minutesRemaining == 0)
 		return [NSString stringWithFormat:@"%02li", secondsRemaining];
 	else if (hoursRemaining == 0)
 		return [NSString stringWithFormat:@"%02li:%02li", minutesRemaining, secondsRemaining];
@@ -85,5 +84,6 @@
 {
 	[self.timer invalidate];
 }
+
 
 @end

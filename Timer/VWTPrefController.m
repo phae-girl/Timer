@@ -17,7 +17,6 @@
 @end
 
 @implementation VWTPrefController
-
 - (id)init
 {
     self = [super init];
@@ -115,4 +114,6 @@
 {
 	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"prefsSheetShouldClose" object:self]];
 }
+
+
 @end
