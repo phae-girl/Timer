@@ -10,13 +10,10 @@
 #import "VWTTimer.h"
 #import "VWTdevSettingsController.h"
 
-
 @interface VWTTimer ()
 @property (nonatomic, copy) NSMutableArray *sounds;
 @property (nonatomic, strong) VWTTimeRemaining *timeRemaining;
 @property (nonatomic, weak) NSTimer *timer;
-
-
 
 @end
 
