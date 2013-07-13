@@ -10,4 +10,6 @@
 
 @interface VWTTimeRemaining : NSObject
 
+- (NSString *)timeRemaining;
+
 @end

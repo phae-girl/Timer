@@ -40,7 +40,7 @@
 		while ([hoursMinutesSeconds count] < 3) {
 			[hoursMinutesSeconds insertObject:@"0" atIndex:0];
 		}
-		_initialDurationInSeconds = [hoursMinutesSeconds[2] integerValue]+ ([hoursMinutesSeconds[1] integerValue] *60) + ([hoursMinutesSeconds[0] integerValue] *3600);
+		_initialDurationInSeconds = [hoursMinutesSeconds[2] integerValue] + ([hoursMinutesSeconds[1] integerValue] *60) + ([hoursMinutesSeconds[0] integerValue] *3600);
 		_totalSecondsRemaining = self.initialDurationInSeconds;
 	}
 	else
@@ -87,6 +87,11 @@
 - (void)stopTimer
 {
 	[self.timer invalidate];
+}
+
+- (void)dealloc
+{
+	NSLog(@"%s",__PRETTY_FUNCTION__);
 }
 
 @end

@@ -45,15 +45,14 @@ typedef enum : NSUInteger {
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
-	for (int i =0; i<[timerButtons count]; i++) {
-		NSButton *button = timerButtons[i];
-		NSString *key = [NSString stringWithFormat:@"durationForTimerButton%d",i];
+	[timerButtons enumerateObjectsUsingBlock:^(NSButton *button, NSUInteger idx, BOOL *stop) {
+		NSString *key = [NSString stringWithFormat:@"durationForTimerButton%ld",(unsigned long)idx];
 		NSString *buttonTitle = [defaults objectForKey:key];
-		if (buttonTitle) 
+		if (buttonTitle)
 			[button setTitle:buttonTitle];
 		else
-			[button setTitle:defaultDurations[i]];
-	}
+			[button setTitle:defaultDurations[idx]];
+	}];
 }
 #pragma mark -
 #pragma mark Controls and Buttons
