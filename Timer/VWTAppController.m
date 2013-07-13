@@ -11,8 +11,8 @@
 #import "NSColor+HexColor.h"
 
 @interface VWTAppController () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate>
-@property (nonatomic) VWTTimer *timer;
-
+@property (nonatomic, strong) VWTTimer *timer;
+@property (nonatomic, weak) NSButton *activeTimerButton;
 
 @end
 
@@ -57,10 +57,11 @@ typedef enum : NSUInteger {
 #pragma mark -
 #pragma mark Controls and Buttons
 
-- (IBAction)startTimer:(id)sender {
+- (IBAction)startTimer:(NSButton *)sender {
 	
 	if (!_timer) {
-		_timer = [[VWTTimer alloc]initTimerWithDuration:[sender title]];
+		_activeTimerButton = sender;
+		_timer = [[VWTTimer alloc]initTimerWithDuration:[self.activeTimerButton title]];
 		[self.timer setDelegate:self];
 		[self.timer startTimer];
 	}
@@ -74,23 +75,23 @@ typedef enum : NSUInteger {
 	[self toggleControlButtons:status];
 }
 
--(IBAction)pauseTimer:(id)sender
+-(IBAction)pauseTimer:(NSButton *)sender
 {
 	[self.timer stopTimer];
 	ControlButtonStatus status = (Resume | Cancel);
 	[self toggleControlButtons:status];
 }
 
-- (IBAction)resumeTimer:(id)sender
+- (IBAction)resumeTimer:(NSButton *)sender
 {
 	[self.timer startTimer];
 	ControlButtonStatus status = (Pause | Cancel);
 	[self toggleControlButtons:status];
 }
 
-- (IBAction)cancelTimer:(id)sender {
+- (IBAction)cancelTimer:(NSButton *)sender {
 	[self killTimer];
-	self.timeDisplay.stringValue = @"00:00";
+	self.timeDisplay.stringValue = @"0:00:00";
 	ControlButtonStatus status = !(Pause | Resume | Cancel);
 	[self toggleControlButtons:status];
 }
@@ -124,6 +125,8 @@ typedef enum : NSUInteger {
 	
 	if (!repeatTimer)
 		[self killTimer];
+	else
+		[self startTimer:self.activeTimerButton];
 	
 	if (sendNotification)
 		[self showNotificationWithMessage:message andSound:selectedSound];
@@ -153,7 +156,6 @@ typedef enum : NSUInteger {
 
 #pragma mark -
 #pragma mark Preference Sheet Methods
-
 
 - (IBAction)showPreferences:(id)sender
 {

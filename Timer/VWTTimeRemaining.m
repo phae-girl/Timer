@@ -51,16 +51,18 @@
 	NSInteger minutesRemaining = (totalSecondsLessHoursRemaining - totalSecondsLessHoursRemaining % 60)/60;
 	NSInteger secondsRemaining = (totalSecondsLessHoursRemaining % 60);
 	
-	if (hoursRemaining == 0 && minutesRemaining == 0)
-		return [NSString stringWithFormat:@"%02li", secondsRemaining];
-	else if (hoursRemaining == 0)
-		return [NSString stringWithFormat:@"%02li:%02li", minutesRemaining, secondsRemaining];
+	if (hoursRemaining == 0 && minutesRemaining == 0 && secondsRemaining < 0)
+		return nil;
 	else
 		return [NSString stringWithFormat:@"%li:%02li:%02li", hoursRemaining, minutesRemaining, secondsRemaining];
-	
 }
 
--(void)dealloc
+- (void)decrementTimeRemaining
+{
+	self.totalSecondsRemaining--;
+}
+
+- (void)dealloc
 {
 	NSLog(@"%s",__PRETTY_FUNCTION__);
 }
