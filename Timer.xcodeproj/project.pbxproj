@@ -20,6 +20,7 @@
 		ED5FC1D9174FDC4700316344 /* VWTTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5FC1D8174FDC4700316344 /* VWTTimer.m */; };
 		ED5FC1DC174FE22800316344 /* SoundFileController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5FC1DB174FE22800316344 /* SoundFileController.m */; };
 		ED5FC1E01750568A00316344 /* VWTAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5FC1DE1750568A00316344 /* VWTAppController.m */; };
+		ED8ED1F21787C48200EEC63D /* VWTTimeRemaining.m in Sources */ = {isa = PBXBuildFile; fileRef = ED8ED1F11787C48200EEC63D /* VWTTimeRemaining.m */; };
 		ED91240F176D066D002CC59D /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = ED91240E176D066D002CC59D /* Preferences.xib */; };
 		ED9A906A176EF031000BFBEF /* dev-options.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED9A9069176EF031000BFBEF /* dev-options.plist */; };
 		ED9A906D176EF14F000BFBEF /* VWTdevSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9A906C176EF14F000BFBEF /* VWTdevSettingsController.m */; };
@@ -52,6 +53,8 @@
 		ED5FC1DB174FE22800316344 /* SoundFileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundFileController.m; sourceTree = "<group>"; };
 		ED5FC1DD1750568A00316344 /* VWTAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWTAppController.h; sourceTree = "<group>"; };
 		ED5FC1DE1750568A00316344 /* VWTAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTAppController.m; sourceTree = "<group>"; };
+		ED8ED1F01787C48200EEC63D /* VWTTimeRemaining.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VWTTimeRemaining.h; sourceTree = "<group>"; };
+		ED8ED1F11787C48200EEC63D /* VWTTimeRemaining.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VWTTimeRemaining.m; sourceTree = "<group>"; };
 		ED91240E176D066D002CC59D /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Preferences.xib; path = Timer/Preferences.xib; sourceTree = "<group>"; };
 		ED9347C71781FA280005854D /* Timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Timer.entitlements; sourceTree = "<group>"; };
 		ED9A9069176EF031000BFBEF /* dev-options.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "dev-options.plist"; sourceTree = "<group>"; };
@@ -78,6 +81,8 @@
 			children = (
 				ED5FC1D7174FDC4700316344 /* VWTTimer.h */,
 				ED5FC1D8174FDC4700316344 /* VWTTimer.m */,
+				ED8ED1F01787C48200EEC63D /* VWTTimeRemaining.h */,
+				ED8ED1F11787C48200EEC63D /* VWTTimeRemaining.m */,
 			);
 			name = Timer;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				ED152841176D63E6003E603B /* VWTPrefController.m in Sources */,
 				ED9A906D176EF14F000BFBEF /* VWTdevSettingsController.m in Sources */,
 				EDABA9EC177223EB00F4F91A /* NSColor+HexColor.m in Sources */,
+				ED8ED1F21787C48200EEC63D /* VWTTimeRemaining.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
