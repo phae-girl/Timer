@@ -8,15 +8,21 @@
 
 #import "VWTTimer.h"
 #import "VWTdevSettingsController.h"
+#import "VWTTimeRemaining.h"
 
 @interface VWTTimer ()
 @property (weak, nonatomic) NSTimer *timer;
 @property (copy, nonatomic) NSMutableArray *sounds;
-@property (nonatomic) NSInteger durationInSeconds, totalSecondsRemaining;
+@property (nonatomic) NSInteger initialDurationInSeconds, totalSecondsRemaining;
 
 @end
 
 @implementation VWTTimer
+
+- (id)init
+{
+    return [self initTimerWithDuration:@"0:00"];
+}
 
 -(id)initTimerWithDuration:(NSString *)duration
 {
@@ -34,20 +40,17 @@
 		while ([hoursMinutesSeconds count] < 3) {
 			[hoursMinutesSeconds insertObject:@"0" atIndex:0];
 		}
-		_durationInSeconds = [hoursMinutesSeconds[2] integerValue]+ ([hoursMinutesSeconds[1] integerValue] *60) + ([hoursMinutesSeconds[0] integerValue] *3600);
-		_totalSecondsRemaining = self.durationInSeconds;
+		_initialDurationInSeconds = [hoursMinutesSeconds[2] integerValue]+ ([hoursMinutesSeconds[1] integerValue] *60) + ([hoursMinutesSeconds[0] integerValue] *3600);
+		_totalSecondsRemaining = self.initialDurationInSeconds;
 	}
 	else
-		_totalSecondsRemaining = self.durationInSeconds;
+		_totalSecondsRemaining = self.initialDurationInSeconds;
 }
 
 - (void)startTimer
 {
-	VWTdevSettingsController *settings = [[VWTdevSettingsController alloc]init];
-	double frequency = [[settings.devSettings valueForKey:@"timerPeriod"] doubleValue];
-	
 	if (!_timer)
-		_timer = [NSTimer scheduledTimerWithTimeInterval:frequency target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+		_timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
 }
 
 - (void)timerFired
