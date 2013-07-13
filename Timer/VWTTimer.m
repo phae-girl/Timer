@@ -12,30 +12,23 @@
 
 
 @interface VWTTimer ()
-<<<<<<< HEAD
-@property (weak, nonatomic) NSTimer *timer;
-@property (nonatomic) NSInteger durationInSeconds, totalSecondsRemaining;
-=======
 @property (nonatomic, copy) NSMutableArray *sounds;
 @property (nonatomic, strong) VWTTimeRemaining *timeRemaining;
 @property (nonatomic, weak) NSTimer *timer;
 
->>>>>>> release/v0.7.6
+
 
 @end
 
 @implementation VWTTimer
 
-<<<<<<< HEAD
-- (id)initTimerWithDuration:(NSString *)duration
-=======
 - (id)init
 {
     return [self initTimerWithDuration:@"0:00"];
 }
 
 -(id)initTimerWithDuration:(NSString *)duration
->>>>>>> release/v0.7.6
+
 {
 	self = [super init];
 	if (self) {
@@ -52,42 +45,11 @@
 
 - (void)timerFired
 {
-<<<<<<< HEAD
-	if (self.totalSecondsRemaining >= 0) {
-		[self.delegate updateRemainingTimeDisplay:[self timeRemaining]];
-		self.totalSecondsRemaining--;
-	}
-	
-	else
-    {
-        [self.delegate timerDidComplete];
-		[self setInitialTimerDuration:nil];
-    }
-}
-
-- (NSString *)timeRemaining
-{
-	NSInteger hoursRemaining = (self.totalSecondsRemaining - self.totalSecondsRemaining % 3600)/3600;
-	NSInteger totalSecondsLessHoursRemaining = self.totalSecondsRemaining - hoursRemaining*60*60;
-	
-	NSInteger minutesRemaining = (totalSecondsLessHoursRemaining - totalSecondsLessHoursRemaining % 60)/60;
-	NSInteger secondsRemaining = (totalSecondsLessHoursRemaining % 60);
-	
-	if (hoursRemaining == 0 && minutesRemaining == 0)
-		return [NSString stringWithFormat:@"%02li", secondsRemaining];
-	else if (hoursRemaining == 0)
-		return [NSString stringWithFormat:@"%02li:%02li", minutesRemaining, secondsRemaining];
-	else
-		return [NSString stringWithFormat:@"%li:%02li:%02li", hoursRemaining, minutesRemaining, secondsRemaining];
-=======
-		
 	NSString *timeRemaining = [self.timeRemaining timeRemaining];
 	
 	if (timeRemaining) {
 		[self.delegate updateRemainingTimeDisplay:timeRemaining];
 		[self.timeRemaining decrementTimeRemaining];
->>>>>>> release/v0.7.6
-
 	}
 	else {
 		[self.delegate timerDidComplete];
@@ -99,9 +61,4 @@
 {
 	[self.timer invalidate];
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> release/v0.7.6
 @end
