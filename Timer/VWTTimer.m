@@ -40,7 +40,7 @@
 - (void)startTimer
 {
 	if (!_timer)
-		_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+		_timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
 }
 
 - (void)timerFired
