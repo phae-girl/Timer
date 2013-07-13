@@ -9,10 +9,12 @@
 #import "VWTAppController.h"
 #import "VWTTimer.h"
 #import "NSColor+HexColor.h"
+#import "VWTNotificationController.h"
 
-@interface VWTAppController () <VWTTimerDelegateProtocol, NSUserNotificationCenterDelegate>
+@interface VWTAppController () <VWTTimerDelegateProtocol>
 @property (nonatomic, strong) VWTTimer *timer;
 @property (nonatomic, weak) NSButton *activeTimerButton;
+@property (nonatomic, strong)VWTNotificationController *notificationsController;
 
 @end
 
@@ -29,9 +31,9 @@ typedef enum : NSUInteger {
 
 - (void)awakeFromNib
 {
-	[[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 	[self setUpColors];
 	[self setUpTimerButtonDurations];
+	_notificationsController = [[VWTNotificationController alloc]init];
 }
 
 - (void)setUpColors
@@ -116,43 +118,15 @@ typedef enum : NSUInteger {
 
 - (void)timerDidComplete
 {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	BOOL repeatTimer = [defaults boolForKey:@"repeatTimer"];
-	BOOL sendNotification = [defaults boolForKey:@"sendNotification"];
-	BOOL speakNotification = [defaults boolForKey:@"speakNotification"];
-	NSString *selectedSound = [defaults objectForKey:@"selectedSound"];
-	NSString *message = [defaults objectForKey:@"customMessage"];
-	
-	if (!repeatTimer)
+
+	if (![self.notificationsController repeatTimer])
 		[self killTimer];
 	else
 		[self startTimer:self.activeTimerButton];
 	
-	if (sendNotification)
-		[self showNotificationWithMessage:message andSound:selectedSound];
-	
-	else if (selectedSound)
-		[[NSSound soundNamed:selectedSound]play];
-	
-	if (speakNotification)
-		[self speakNotification:message];
+	[self.notificationsController sendNotifications];
 }
 
-- (void)speakNotification:(NSString*)message
-{
-	NSSpeechSynthesizer *synthesizer = [[NSSpeechSynthesizer alloc]initWithVoice:nil];
-	[synthesizer startSpeakingString:message];
-}
-
-- (void)showNotificationWithMessage:(NSString *)message andSound:(NSString *)sound
-{
-	NSUserNotification *notification = [[NSUserNotification alloc] init];
-	notification.title = @"Timer Complete!";
-	notification.informativeText = message;
-	notification.soundName = sound;
-	[[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
-
-}
 
 #pragma mark -
 #pragma mark Preference Sheet Methods
@@ -175,11 +149,6 @@ typedef enum : NSUInteger {
 	self.preferencesSheet = nil;
 }
 
-#pragma mark -
-#pragma mark NSUserNotificationCenter Delegate Method
 
-- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification{
-    return YES;
-}
 
 @end

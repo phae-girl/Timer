@@ -59,7 +59,7 @@
 				<string key="NSWindowContentMaxSize">{380, 615}</string>
 				<string key="NSWindowContentMinSize">{380, 615}</string>
 				<object class="NSView" key="NSWindowView" id="1006">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSButton" id="273645280">
@@ -67,7 +67,6 @@
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{259, 19}, {101, 64}}</string>
 							<reference key="NSSuperview" ref="1006"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:22</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="1006506669">
@@ -562,7 +561,6 @@
 						</object>
 					</array>
 					<string key="NSFrameSize">{380, 615}</string>
-					<reference key="NSSuperview"/>
 					<reference key="NSNextKeyView" ref="79449487"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
@@ -580,7 +578,7 @@
 				<bool key="NSAnimates">YES</bool>
 			</object>
 			<object class="NSCustomView" id="704724048">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="368189003">
@@ -612,7 +610,6 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrame">{{176, 19}, {48, 23}}</string>
 						<reference key="NSSuperview" ref="704724048"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:22</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="269564125">
@@ -734,7 +731,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{300, 173}</string>
-				<reference key="NSSuperview"/>
 				<reference key="NSNextKeyView" ref="156620112"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<string key="NSClassName">NSView</string>
@@ -752,15 +748,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: self.sendAlertMessage</string>
+						<string key="label">value: self.shouldDisplayNotificationMessage</string>
 						<reference key="source" ref="625019879"/>
 						<reference key="destination" ref="977284328"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="625019879"/>
 							<reference key="NSDestination" ref="977284328"/>
-							<string key="NSLabel">value: self.sendAlertMessage</string>
+							<string key="NSLabel">value: self.shouldDisplayNotificationMessage</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">self.sendAlertMessage</string>
+							<string key="NSKeyPath">self.shouldDisplayNotificationMessage</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -768,15 +764,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: self.customMessage</string>
+						<string key="label">value: self.notificationMessage</string>
 						<reference key="source" ref="218783574"/>
 						<reference key="destination" ref="977284328"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="218783574"/>
 							<reference key="NSDestination" ref="977284328"/>
-							<string key="NSLabel">value: self.customMessage</string>
+							<string key="NSLabel">value: self.notificationMessage</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">self.customMessage</string>
+							<string key="NSKeyPath">self.notificationMessage</string>
 							<object class="NSDictionary" key="NSOptions">
 								<string key="NS.key.0">NSContinuouslyUpdatesValue</string>
 								<boolean value="YES" key="NS.object.0"/>
@@ -964,15 +960,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: self.speakMessage</string>
+						<string key="label">value: self.shouldSpeakNotificationMessage</string>
 						<reference key="source" ref="27257160"/>
 						<reference key="destination" ref="977284328"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="27257160"/>
 							<reference key="NSDestination" ref="977284328"/>
-							<string key="NSLabel">value: self.speakMessage</string>
+							<string key="NSLabel">value: self.shouldSpeakNotificationMessage</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">self.speakMessage</string>
+							<string key="NSKeyPath">self.shouldSpeakNotificationMessage</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
@@ -980,15 +976,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: self.repeatTimer</string>
+						<string key="label">value: self.timerShouldRepeat</string>
 						<reference key="source" ref="961015363"/>
 						<reference key="destination" ref="977284328"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="961015363"/>
 							<reference key="NSDestination" ref="977284328"/>
-							<string key="NSLabel">value: self.repeatTimer</string>
+							<string key="NSLabel">value: self.timerShouldRepeat</string>
 							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">self.repeatTimer</string>
+							<string key="NSKeyPath">self.timerShouldRepeat</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>

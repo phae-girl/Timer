@@ -8,9 +8,10 @@
 
 #import "VWTPrefController.h"
 #import "SoundFileController.h"
+#import "VWTDefaultKeys.h"
 
 @interface VWTPrefController () 
-@property (nonatomic) NSUserDefaults *defaults;
+@property (strong, nonatomic) NSUserDefaults *defaults;
 @property (assign, nonatomic) NSInteger senderTag;
 @property (copy, nonatomic) NSArray *customTimerButtons;
 
@@ -30,11 +31,11 @@
 
 - (void)awakeFromNib
 {
-	if ([self.defaults objectForKey:@"customMessage"]){
-		self.customMessage = [self.defaults objectForKey:@"customMessage"];
-		self.sendAlertMessage = [self.defaults boolForKey:@"sendNotification"];
-		self.speakMessage = [self.defaults boolForKey:@"speakNotification"];
-		self.repeatTimer = [self.defaults boolForKey:@"repeatTimer"];
+	if ([self.defaults objectForKey:VWTNotificationMessageKey]){
+		self.notificationMessage = [self.defaults objectForKey:VWTNotificationMessageKey];
+		self.shouldDisplayNotificationMessage = [self.defaults boolForKey:VWTShouldDisplayNotificationKey];
+		self.shouldSpeakNotificationMessage = [self.defaults boolForKey:VWTShouldSpeakNotificationKey];
+		self.timerShouldRepeat = [self.defaults boolForKey:VWTRepeatTimerKey];
 		
 	}
 	_customTimerButtons = @[self.button1,self.button2,self.button3,self.button4,self.button5,self.button6];
@@ -46,7 +47,7 @@
 {
 	[self.soundSelectionButton addItemsWithTitles:[SoundFileController getSounds]];
 	[self.soundSelectionButton insertItemWithTitle:@"" atIndex:0];
-	[self.soundSelectionButton selectItemWithTitle:[self.defaults objectForKey:@"selectedSound"]];
+	[self.soundSelectionButton selectItemWithTitle:[self.defaults objectForKey:VWTNotificationSoundKey]];
 	
 }
 
@@ -101,11 +102,11 @@
 
 - (IBAction)saveAndClose:(id)sender
 {
-	[self.defaults setObject:self.soundSelectionButton.titleOfSelectedItem forKey:@"selectedSound"];
-	[self.defaults setBool:self.sendAlertMessage forKey:@"sendNotification"];
-	[self.defaults setBool:self.speakMessage forKey:@"speakNotification"];
-	[self.defaults setBool:self.repeatTimer forKey:@"repeatTimer"];
-	[self.defaults setObject:self.customMessage forKey:@"customMessage"];
+	[self.defaults setObject:self.soundSelectionButton.titleOfSelectedItem forKey:VWTNotificationSoundKey];
+	[self.defaults setBool:self.shouldDisplayNotificationMessage forKey:VWTShouldDisplayNotificationKey];
+	[self.defaults setBool:self.shouldSpeakNotificationMessage forKey:VWTShouldSpeakNotificationKey];
+	[self.defaults setBool:self.timerShouldRepeat forKey:VWTRepeatTimerKey];
+	[self.defaults setObject:self.notificationMessage forKey:VWTNotificationMessageKey];
 	[self.defaults synchronize];
 	
 	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"prefsSheetShouldClose" object:self]];

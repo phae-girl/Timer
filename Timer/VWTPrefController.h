@@ -22,8 +22,8 @@
 
 
 @property (assign, nonatomic) IBOutlet NSTextField *customDurationEditBox;
-@property (assign, nonatomic) NSInteger sendAlertMessage, speakMessage, repeatTimer;
-@property (copy, nonatomic) NSString *customMessage;
+@property (assign, nonatomic) NSInteger shouldDisplayNotificationMessage, shouldSpeakNotificationMessage, timerShouldRepeat;
+@property (copy, nonatomic) NSString *notificationMessage;
 
 - (IBAction)changeDurationForButton:(id)sender;
 - (IBAction)saveAndClose:(id)sender;
