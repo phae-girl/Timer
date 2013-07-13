@@ -6,14 +6,15 @@
 //  Copyright (c) 2013 Phaedra Deepsky. All rights reserved.
 //
 
-#import "VWTPrefController.h"
 #import "SoundFileController.h"
 #import "VWTDefaultKeys.h"
+#import "VWTPrefController.h"
+
 
 @interface VWTPrefController () 
-@property (strong, nonatomic) NSUserDefaults *defaults;
-@property (assign, nonatomic) NSInteger senderTag;
-@property (copy, nonatomic) NSArray *customTimerButtons;
+@property (nonatomic, assign) NSInteger senderTag;
+@property (nonatomic, copy) NSArray *customTimerButtons;
+@property (nonatomic, strong) NSUserDefaults *defaults;
 
 @end
 

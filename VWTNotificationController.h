@@ -12,4 +12,5 @@
 
 - (BOOL)repeatTimer;
 - (void)sendNotifications;
+
 @end

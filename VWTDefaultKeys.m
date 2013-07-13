@@ -8,11 +8,11 @@
 
 #import "VWTDefaultKeys.h"
 
-NSString *const VWTRepeatTimerKey = @"repeatTimer";
+NSString *const VWTNotificationMessageKey = @"customMessage";
 NSString *const VWTNotificationSoundKey = @"selectedSound";
+NSString *const VWTRepeatTimerKey = @"repeatTimer";
 NSString *const VWTShouldDisplayNotificationKey = @"sendNotification";
 NSString *const VWTShouldSpeakNotificationKey = @"speakNotification";
-NSString *const VWTNotificationMessageKey = @"customMessage";
 
 @implementation VWTDefaultKeys
 

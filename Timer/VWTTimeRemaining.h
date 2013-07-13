@@ -10,8 +10,8 @@
 
 @interface VWTTimeRemaining : NSObject
 
+- (NSString *)timeRemaining;
 - (id)initWithDuration:(NSString *)duration;
 - (void)decrementTimeRemaining;
-- (NSString *)timeRemaining;
 
 @end

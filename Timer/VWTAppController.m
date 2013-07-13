@@ -6,15 +6,16 @@
 //  Copyright (c) 2013 Phaedra Deepsky. All rights reserved.
 //
 
-#import "VWTAppController.h"
-#import "VWTTimer.h"
 #import "NSColor+HexColor.h"
+#import "VWTAppController.h"
 #import "VWTNotificationController.h"
+#import "VWTTimer.h"
 
 @interface VWTAppController () <VWTTimerDelegateProtocol>
 @property (nonatomic, strong) VWTTimer *timer;
-@property (nonatomic, weak) NSButton *activeTimerButton;
 @property (nonatomic, strong)VWTNotificationController *notificationsController;
+@property (nonatomic, weak) NSButton *activeTimerButton;
+
 
 @end
 
@@ -28,7 +29,6 @@ typedef enum : NSUInteger {
 
 #pragma mark -
 #pragma mark Initial Setup
-
 - (void)awakeFromNib
 {
 	[self setUpColors];
@@ -56,9 +56,9 @@ typedef enum : NSUInteger {
 			[button setTitle:defaultDurations[idx]];
 	}];
 }
+
 #pragma mark -
 #pragma mark Controls and Buttons
-
 - (IBAction)startTimer:(NSButton *)sender {
 	
 	if (!_timer) {
@@ -128,7 +128,6 @@ typedef enum : NSUInteger {
 
 #pragma mark -
 #pragma mark Preference Sheet Methods
-
 - (IBAction)showPreferences:(id)sender
 {
 	if (!_preferencesSheet)

@@ -6,12 +6,14 @@
 //  Copyright (c) 2013 Phaedra Deepsky. All rights reserved.
 //
 
-#import "VWTNotificationController.h"
 #import "VWTDefaultKeys.h"
+#import "VWTNotificationController.h"
+
 
 @interface VWTNotificationController () <NSUserNotificationCenterDelegate>
 @property (nonatomic, strong) NSUserDefaults *defaults;
 @property (nonatomic, strong) NSUserNotificationCenter *notificationCenter;
+
 @end
 
 @implementation VWTNotificationController
@@ -63,7 +65,6 @@
 
 #pragma mark -
 #pragma mark User Notification Delegate Method
-
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification
 {
     return YES;

@@ -115,10 +115,11 @@
 			isa = PBXGroup;
 			children = (
 				EDABA9ED177223F400F4F91A /* Class Categories */,
-				ED912410176D0685002CC59D /* XIBs */,
-				ED48DFC3174E8D0200BA095A /* Timer */,
+				ED48DFC3174E8D0200BA095A /* Classes */,
 				ED48DFBC174E8D0200BA095A /* Frameworks */,
 				ED48DFBB174E8D0200BA095A /* Products */,
+				ED48DFC4174E8D0200BA095A /* Supporting Files */,
+				ED912410176D0685002CC59D /* XIBs */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,42 +150,40 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		ED48DFC3174E8D0200BA095A /* Timer */ = {
+		ED48DFC3174E8D0200BA095A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				EDF7A9621791C6BA006BF71A /* VWTDefaultKeys.h */,
-				EDF7A9631791C6BA006BF71A /* VWTDefaultKeys.m */,
-				EDF7A9611791C67C006BF71A /* VWTNotificationController.h */,
-				EDB7482617910B8600CF8925 /* VWTNotificationController.m */,
-				ED9347C71781FA280005854D /* Timer.entitlements */,
-				ED48DFCF174E8D0200BA095A /* VWTAppDelegate.h */,
-				ED48DFD0174E8D0200BA095A /* VWTAppDelegate.m */,
 				ED5FC1E21750569700316344 /* AppController */,
+				EDF7A9671791D32D006BF71A /* AppDelegate */,
+				EDF7A9651791D311006BF71A /* DefaultKeys */,
+				EDF7A9661791D31F006BF71A /* NotificationController */,
 				ED152842176D63EB003E603B /* PrefsController */,
 				ED15283E176D637A003E603B /* Sounds */,
 				ED15283D176D6369003E603B /* Timer */,
-				ED48DFC4174E8D0200BA095A /* Supporting Files */,
 			);
+			name = Classes;
 			path = Timer;
 			sourceTree = "<group>";
 		};
 		ED48DFC4174E8D0200BA095A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				ED5579E11778BA7B00817BCA /* VWT.Timer.plist */,
+				ED48DFCC174E8D0200BA095A /* Credits.rtf */,
 				ED9A9069176EF031000BFBEF /* dev-options.plist */,
-				ED9A906B176EF14F000BFBEF /* VWTdevSettingsController.h */,
-				ED9A906C176EF14F000BFBEF /* VWTdevSettingsController.m */,
+				ED48DFC6174E8D0200BA095A /* InfoPlist.strings */,
 				ED0469C8176CD0620092F445 /* LICENSE.md */,
+				ED48DFC9174E8D0200BA095A /* main.m */,
 				ED0469C9176CD0620092F445 /* README.md */,
 				ED48DFC5174E8D0200BA095A /* Timer-Info.plist */,
-				ED0469A1176CCBE60092F445 /* timer.icns */,
-				ED48DFC6174E8D0200BA095A /* InfoPlist.strings */,
-				ED48DFC9174E8D0200BA095A /* main.m */,
 				ED48DFCB174E8D0200BA095A /* Timer-Prefix.pch */,
-				ED48DFCC174E8D0200BA095A /* Credits.rtf */,
+				ED9347C71781FA280005854D /* Timer.entitlements */,
+				ED0469A1176CCBE60092F445 /* timer.icns */,
+				ED5579E11778BA7B00817BCA /* VWT.Timer.plist */,
+				ED9A906B176EF14F000BFBEF /* VWTdevSettingsController.h */,
+				ED9A906C176EF14F000BFBEF /* VWTdevSettingsController.m */,
 			);
 			name = "Supporting Files";
+			path = Timer;
 			sourceTree = "<group>";
 		};
 		ED5FC1E21750569700316344 /* AppController */ = {
@@ -212,6 +211,33 @@
 				EDABA9EB177223EB00F4F91A /* NSColor+HexColor.m */,
 			);
 			name = "Class Categories";
+			sourceTree = "<group>";
+		};
+		EDF7A9651791D311006BF71A /* DefaultKeys */ = {
+			isa = PBXGroup;
+			children = (
+				EDF7A9621791C6BA006BF71A /* VWTDefaultKeys.h */,
+				EDF7A9631791C6BA006BF71A /* VWTDefaultKeys.m */,
+			);
+			name = DefaultKeys;
+			sourceTree = "<group>";
+		};
+		EDF7A9661791D31F006BF71A /* NotificationController */ = {
+			isa = PBXGroup;
+			children = (
+				EDF7A9611791C67C006BF71A /* VWTNotificationController.h */,
+				EDB7482617910B8600CF8925 /* VWTNotificationController.m */,
+			);
+			name = NotificationController;
+			sourceTree = "<group>";
+		};
+		EDF7A9671791D32D006BF71A /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				ED48DFCF174E8D0200BA095A /* VWTAppDelegate.h */,
+				ED48DFD0174E8D0200BA095A /* VWTAppDelegate.m */,
+			);
+			name = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

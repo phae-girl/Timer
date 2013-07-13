@@ -6,14 +6,16 @@
 //  Copyright (c) 2013 Phaedra Deepsky. All rights reserved.
 //
 
+#import "VWTTimeRemaining.h"
 #import "VWTTimer.h"
 #import "VWTdevSettingsController.h"
-#import "VWTTimeRemaining.h"
+
 
 @interface VWTTimer ()
-@property (weak, nonatomic) NSTimer *timer;
-@property (copy, nonatomic) NSMutableArray *sounds;
-@property (strong, nonatomic) VWTTimeRemaining *timeRemaining;
+@property (nonatomic, copy) NSMutableArray *sounds;
+@property (nonatomic, strong) VWTTimeRemaining *timeRemaining;
+@property (nonatomic, weak) NSTimer *timer;
+
 
 @end
 

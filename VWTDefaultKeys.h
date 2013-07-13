@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-extern NSString *const VWTRepeatTimerKey;
+extern NSString *const VWTNotificationMessageKey;
 extern NSString *const VWTNotificationSoundKey;
+extern NSString *const VWTRepeatTimerKey;
 extern NSString *const VWTShouldDisplayNotificationKey;
 extern NSString *const VWTShouldSpeakNotificationKey;
-extern NSString *const VWTNotificationMessageKey;
 
 
 @interface VWTDefaultKeys : NSObject
