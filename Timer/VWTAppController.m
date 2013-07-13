@@ -118,15 +118,13 @@ typedef enum : NSUInteger {
 
 - (void)timerDidComplete
 {
-
-	if (![self.notificationsController repeatTimer])
-		[self killTimer];
-	else
+	if ([self.notificationsController repeatTimer])
 		[self startTimer:self.activeTimerButton];
+	else
+		[self killTimer];
 	
 	[self.notificationsController sendNotifications];
 }
-
 
 #pragma mark -
 #pragma mark Preference Sheet Methods
