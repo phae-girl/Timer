@@ -6,51 +6,53 @@
 //  Copyright (c) 2013 Phaedra Deepsky. All rights reserved.
 //
 
+#import "VWTTimeRemaining.h"
 #import "VWTTimer.h"
 #import "VWTdevSettingsController.h"
 
+
 @interface VWTTimer ()
+<<<<<<< HEAD
 @property (weak, nonatomic) NSTimer *timer;
 @property (nonatomic) NSInteger durationInSeconds, totalSecondsRemaining;
+=======
+@property (nonatomic, copy) NSMutableArray *sounds;
+@property (nonatomic, strong) VWTTimeRemaining *timeRemaining;
+@property (nonatomic, weak) NSTimer *timer;
+
+>>>>>>> release/v0.7.6
 
 @end
 
 @implementation VWTTimer
 
+<<<<<<< HEAD
 - (id)initTimerWithDuration:(NSString *)duration
+=======
+- (id)init
+{
+    return [self initTimerWithDuration:@"0:00"];
+}
+
+-(id)initTimerWithDuration:(NSString *)duration
+>>>>>>> release/v0.7.6
 {
 	self = [super init];
 	if (self) {
-		[self setInitialTimerDuration:duration];
+		_timeRemaining = [[VWTTimeRemaining alloc]initWithDuration:duration];
 	}
 	return self;
 }
 
-- (void)setInitialTimerDuration:(NSString *)duration
-{
-	if (duration) {
-		NSMutableArray *hoursMinutesSeconds = [[duration componentsSeparatedByString:@":"]mutableCopy];
-		while ([hoursMinutesSeconds count] < 3) {
-			[hoursMinutesSeconds insertObject:@"0" atIndex:0];
-		}
-		_durationInSeconds = [hoursMinutesSeconds[2] integerValue]+ ([hoursMinutesSeconds[1] integerValue] *60) + ([hoursMinutesSeconds[0] integerValue] *3600);
-		_totalSecondsRemaining = self.durationInSeconds;
-	}
-	else
-		_totalSecondsRemaining = self.durationInSeconds;
-}
-
 - (void)startTimer
 {
-	VWTdevSettingsController *settings = [[VWTdevSettingsController alloc]init];
-	double frequency = [[settings.devSettings valueForKey:@"timerPeriod"] doubleValue];
-	
 	if (!_timer)
-		_timer = [NSTimer scheduledTimerWithTimeInterval:frequency target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+		_timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
 }
 
 - (void)timerFired
 {
+<<<<<<< HEAD
 	if (self.totalSecondsRemaining >= 0) {
 		[self.delegate updateRemainingTimeDisplay:[self timeRemaining]];
 		self.totalSecondsRemaining--;
@@ -77,13 +79,29 @@
 		return [NSString stringWithFormat:@"%02li:%02li", minutesRemaining, secondsRemaining];
 	else
 		return [NSString stringWithFormat:@"%li:%02li:%02li", hoursRemaining, minutesRemaining, secondsRemaining];
+=======
+		
+	NSString *timeRemaining = [self.timeRemaining timeRemaining];
+	
+	if (timeRemaining) {
+		[self.delegate updateRemainingTimeDisplay:timeRemaining];
+		[self.timeRemaining decrementTimeRemaining];
+>>>>>>> release/v0.7.6
 
+	}
+	else {
+		[self.delegate timerDidComplete];
+		self.timeRemaining = nil;
+	}
 }
 
 - (void)stopTimer
 {
 	[self.timer invalidate];
 }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> release/v0.7.6
 @end

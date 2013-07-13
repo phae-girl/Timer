@@ -10,8 +10,8 @@
 
 @protocol VWTTimerDelegateProtocol <NSObject>
 @required
-- (void)updateRemainingTimeDisplay:(NSString *)timeRemaining;
 - (void)timerDidComplete;
+- (void)updateRemainingTimeDisplay:(NSString *)timeRemaining;
 
 @end
 

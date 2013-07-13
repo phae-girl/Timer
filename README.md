@@ -11,6 +11,13 @@ If you're interested in downloading a prebuilt binary to play with, you can find
 
 ##Release Notes
 
+###V0.7.6
+2013-07-13
+- No new features, but a lot of refactoring under the hood. Code having to do with user notification interaction has been broken out into its own class, as well as code having to do with time remaining on a timer. There have been some other minor changes as well, such as changing a method to use `[array enumerateObjectsUsingBlock:...]` thanks to [this article][hipster] by NSHipster. I also added a class to set the keys for interacting with `NSUserDefaults` as global variables, a technique directly ripped off from Aaron Hillegass' book [Cocoa Programming for Mac OS X][hillegass]. Finally there was another general tidy-up of the code base. I think this is actually starting to look like something. 
+
+[hipster]: http://nshipster.com/enumerators/ (NSFastEnumeration / NSEnumerator / -enumerateObjectsUsingBlock: : NSHipster)
+[hillegass]: http://www.amazon.ca/Cocoa-Programming-Mac-4th-Edition/dp/0321774086 (Cocoa Programming for Mac OS X (4th Edition): Amazon.ca: Aaron Hillegass, Adam Preble: Books)
+
 ###V0.7.5
 2013-07-01
 - Code signed app. Yay!

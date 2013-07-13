@@ -10,13 +10,13 @@
 
 @interface VWTAppController : NSObject
 
-@property (nonatomic, assign) IBOutlet NSWindow *window;
 @property (nonatomic, assign) IBOutlet NSWindow *preferencesSheet;
+@property (nonatomic, assign) IBOutlet NSWindow *window;
 
-@property (nonatomic, weak) IBOutlet NSTextField *timeDisplay;
+@property (nonatomic, weak) IBOutlet NSButton *cancelButton;
 @property (nonatomic, weak) IBOutlet NSButton *pauseButton;
 @property (nonatomic, weak) IBOutlet NSButton *resumeButton;
-@property (nonatomic, weak) IBOutlet NSButton *cancelButton;
+@property (nonatomic, weak) IBOutlet NSTextField *timeDisplay;
 
 @property (weak) IBOutlet NSButton *timerButton0;
 @property (weak) IBOutlet NSButton *timerButton1;
@@ -26,12 +26,11 @@
 @property (weak) IBOutlet NSButton *timerButton5;
 
 
-- (IBAction)startTimer:(id)sender;
-
+- (IBAction)cancelTimer:(id)sender;
 - (IBAction)pauseTimer:(id)sender;
 - (IBAction)resumeTimer:(id)sender;
-- (IBAction)cancelTimer:(id)sender;
-
 - (IBAction)showPreferences:(id)sender;
+- (IBAction)startTimer:(id)sender;
+
 
 @end
